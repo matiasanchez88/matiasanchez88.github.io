@@ -3,515 +3,1096 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Mayoreo | Conectando el Comercio Mayorista Argentino</title>
+    <title>Al Mayoreo | Directorio Mayorista de Argentina</title>
+    <meta name="description" content="Conectamos minoristas con distribuidores y fabricantes mayoristas de toda Argentina. Sin intermediarios ni comisiones ocultas. Encontrá tu proveedor ideal.">
+ 
+    <!-- Open Graph / WhatsApp / redes sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://matiasanchez88.github.io/">
+    <meta property="og:title" content="Al Mayoreo | Directorio Mayorista de Argentina">
+    <meta property="og:description" content="Conectamos minoristas con distribuidores y fabricantes mayoristas de toda Argentina. Sin intermediarios ni comisiones ocultas.">
+    <meta property="og:image" content="https://matiasanchez88.github.io/og-image.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Al Mayoreo | Directorio Mayorista de Argentina">
+    <meta property="twitter:description" content="Conectamos minoristas con mayoristas de Argentina. Directo, sin intermediarios.">
+ 
+    <!-- Favicon SVG inline -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234f46e5'/><text y='.9em' font-size='65' x='12'>📦</text></svg>">
+ 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+ 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], outfit: ['Outfit', 'sans-serif'] }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], outfit: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        brand: { 50:'#eef2ff', 100:'#e0e7ff', 200:'#c7d2fe', 400:'#818cf8', 600:'#4f46e5', 700:'#4338ca', 900:'#1e1b4b' }
+                    }
                 }
             }
         }
     </script>
     <style>
-        .view-section { transition: opacity 0.2s ease-in-out; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #FAF9F6; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #c7d2fe; border-radius: 4px; }
+ 
+        /* Transiciones de vistas */
+        .view-section { transition: opacity 0.15s ease; }
+ 
+        /* Gradient text */
+        .grad-text {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #4f46e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+ 
+        /* Card hover lift */
+        .card-hover { transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(79,70,229,0.1); border-color: #c7d2fe; }
+ 
+        /* Pill badge */
+        .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; }
+ 
+        /* Hero pattern */
+        .hero-grid {
+            background-image: radial-gradient(circle, #c7d2fe 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+ 
+        /* Mobile menu */
+        #mobile-menu { transition: max-height 0.25s ease, opacity 0.25s ease; max-height: 0; opacity: 0; overflow: hidden; }
+        #mobile-menu.open { max-height: 300px; opacity: 1; }
+ 
+        /* Sidebar drawer for mobile */
+        #filter-sidebar { transition: transform 0.25s ease; }
+ 
+        /* Step number ring */
+        .step-ring { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #c7d2fe; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #4f46e5; flex-shrink: 0; }
+ 
+        /* Input focus */
+        input:focus, select:focus, textarea:focus { outline: none; box-shadow: 0 0 0 3px rgba(79,70,229,0.15); }
+ 
+        /* Toast */
+        .toast { animation: slideIn 0.2s ease; }
+        @keyframes slideIn { from { transform: translateX(40px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+ 
+        /* Stat chip */
+        .stat-chip { background: rgba(79,70,229,0.07); border: 1px solid rgba(79,70,229,0.15); border-radius: 12px; padding: 12px 16px; }
+ 
+        /* Empty state */
+        .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; gap: 12px; color: #94a3b8; text-align: center; }
+ 
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.4rem !important; }
+        }
+        @media (max-width: 480px) {
+            .hero-title { font-size: 2rem !important; }
+        }
     </style>
 </head>
-<body class="bg-[#FAF9F6] text-slate-800 min-h-screen flex flex-col font-sans">
-
-    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
-
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans">
+ 
+    <!-- TOAST -->
+    <div id="toast-container" class="fixed top-5 right-5 z-[100] flex flex-col gap-2 pointer-events-none"></div>
+ 
     <!-- NAVBAR -->
-    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/60 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="changeView('home')">
-                <div class="h-11 w-11 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-md">
-                    <i class="fa-solid fa-boxes-packing text-lg"></i>
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex justify-between items-center">
+ 
+            <!-- Logo -->
+            <div class="flex items-center gap-2.5 cursor-pointer" onclick="changeView('home')">
+                <div class="h-9 w-9 md:h-11 md:w-11 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow">
+                    <i class="fa-solid fa-boxes-packing text-sm md:text-base"></i>
                 </div>
                 <div>
-                    <span class="font-outfit font-extrabold text-2xl tracking-tight bg-gradient-to-r from-indigo-600 to-indigo-900 bg-clip-text text-transparent">AL MAYOREO</span>
-                    <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-widest -mt-1">Mayoristas de Argentina</span>
+                    <span class="font-outfit font-extrabold text-xl md:text-2xl tracking-tight grad-text">AL MAYOREO</span>
+                    <span class="hidden sm:block text-[9px] text-slate-400 font-bold uppercase tracking-widest -mt-0.5">Mayoristas de Argentina</span>
                 </div>
             </div>
-            <div class="flex items-center gap-4">
-                <button onclick="changeView('home')" class="text-slate-600 hover:text-indigo-600 font-medium text-sm transition">
-                    <i class="fa-solid fa-magnifying-glass mr-1"></i> Explorar
+ 
+            <!-- Desktop nav -->
+            <nav class="hidden md:flex items-center gap-6">
+                <button onclick="changeView('home')" class="text-slate-500 hover:text-brand-600 font-medium text-sm transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-magnifying-glass text-xs"></i> Explorar
                 </button>
+                <button onclick="scrollToSection('como-funciona')" class="text-slate-500 hover:text-brand-600 font-medium text-sm transition">Cómo funciona</button>
+                <button onclick="scrollToSection('contacto')" class="text-slate-500 hover:text-brand-600 font-medium text-sm transition">Contacto</button>
+            </nav>
+ 
+            <!-- CTA -->
+            <div class="flex items-center gap-2">
                 <div id="nav-auth-buttons">
-                    <button onclick="openAuthModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow-md transition-all flex items-center gap-2">
-                        <i class="fa-solid fa-shop"></i> Sumar mi Tienda
+                    <button onclick="openAuthModal()" class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-semibold text-xs md:text-sm shadow transition flex items-center gap-2">
+                        <i class="fa-solid fa-shop hidden sm:inline"></i>
+                        <span>Sumar mi Tienda</span>
                     </button>
                 </div>
+                <!-- Mobile menu toggle -->
+                <button onclick="toggleMobileMenu()" class="md:hidden ml-1 p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition">
+                    <i class="fa-solid fa-bars text-base"></i>
+                </button>
+            </div>
+        </div>
+ 
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden border-t border-slate-100 bg-white px-4">
+            <div class="py-3 flex flex-col gap-1">
+                <button onclick="changeView('home'); closeMobileMenu()" class="text-left py-2.5 px-3 text-sm text-slate-700 rounded-lg hover:bg-slate-50 font-medium transition">
+                    <i class="fa-solid fa-magnifying-glass mr-2 text-brand-500 text-xs"></i> Explorar directorio
+                </button>
+                <button onclick="scrollToSection('como-funciona'); closeMobileMenu()" class="text-left py-2.5 px-3 text-sm text-slate-700 rounded-lg hover:bg-slate-50 font-medium transition">
+                    <i class="fa-solid fa-circle-question mr-2 text-brand-500 text-xs"></i> Cómo funciona
+                </button>
+                <button onclick="scrollToSection('contacto'); closeMobileMenu()" class="text-left py-2.5 px-3 text-sm text-slate-700 rounded-lg hover:bg-slate-50 font-medium transition">
+                    <i class="fa-solid fa-envelope mr-2 text-brand-500 text-xs"></i> Contacto
+                </button>
             </div>
         </div>
     </header>
-
-    <!-- HERO BANNER -->
-    <section id="hero-banner" class="bg-gradient-to-b from-indigo-50/60 via-[#FAF9F6] to-[#FAF9F6] text-slate-800 py-12 md:py-16 border-b border-slate-200/40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl">
-                <div class="inline-block bg-indigo-50 border border-indigo-200 text-indigo-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
-                    ⚡ Conectividad Directa Local
+ 
+    <!-- ===== HERO ===== -->
+    <section id="hero-banner" class="relative overflow-hidden bg-white border-b border-slate-200">
+        <div class="hero-grid absolute inset-0 opacity-40"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-50 via-white to-violet-50/60"></div>
+ 
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 text-brand-700 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-5">
+                    <span class="w-1.5 h-1.5 bg-brand-500 rounded-full animate-pulse"></span>
+                    Gratis · Sin comisiones · Directo
                 </div>
-                <h1 class="font-outfit font-extrabold text-4xl md:text-5xl tracking-tight leading-none mb-4 text-slate-900">
-                    Busca tu <span class="text-indigo-600">mayorista</span>
+ 
+                <h1 class="font-outfit font-black text-5xl md:text-6xl tracking-tight leading-none mb-4 text-slate-900 hero-title">
+                    Encontrá tu<br><span class="grad-text">mayorista</span><br>ideal
                 </h1>
-                <p class="text-slate-600 text-base mb-6 leading-relaxed max-w-xl">
-                    Conectamos directamente a minoristas de todo el país con proveedores mayoristas de Argentina. Sin intermediarios ni comisiones ocultas.
+ 
+                <p class="text-slate-500 text-base md:text-lg mb-8 leading-relaxed max-w-lg">
+                    El directorio más completo de distribuidores y fabricantes mayoristas de Argentina. Conectate directo, sin intermediarios.
                 </p>
+ 
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button onclick="focusSearch()" class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-xl font-semibold text-sm shadow-lg transition flex items-center gap-2 justify-center">
+                        <i class="fa-solid fa-magnifying-glass"></i> Explorar directorio
+                    </button>
+                    <button onclick="openAuthModal()" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-6 py-3 rounded-xl font-semibold text-sm transition flex items-center gap-2 justify-center">
+                        <i class="fa-solid fa-shop text-brand-500"></i> Registrar mi tienda
+                    </button>
+                </div>
+ 
+                <!-- Stats -->
+                <div class="flex flex-wrap gap-4 mt-10">
+                    <div class="stat-chip">
+                        <div class="text-lg font-extrabold font-outfit text-brand-700" id="stat-tiendas">1</div>
+                        <div class="text-xs text-slate-500 font-medium">Tiendas activas</div>
+                    </div>
+                    <div class="stat-chip">
+                        <div class="text-lg font-extrabold font-outfit text-brand-700">0%</div>
+                        <div class="text-xs text-slate-500 font-medium">Comisión cobrada</div>
+                    </div>
+                    <div class="stat-chip">
+                        <div class="text-lg font-extrabold font-outfit text-brand-700">24 prov.</div>
+                        <div class="text-xs text-slate-500 font-medium">De todo el país</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- EXPLORADOR PRINCIPAL -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
-        
+ 
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="flex-grow w-full">
+ 
         <!-- VISTA: HOME -->
         <section id="view-home" class="view-section">
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                <!-- FILTROS -->
-                <aside class="lg:col-span-1 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-6 h-fit sticky top-24">
-                    <div class="flex justify-between items-center pb-4 border-b border-slate-100">
-                        <h3 class="font-outfit font-bold text-base text-slate-900 flex items-center gap-2">
-                            <i class="fa-solid fa-sliders text-indigo-600"></i> Filtros
-                        </h3>
-                        <button onclick="resetFilters()" class="text-xs font-semibold text-slate-400 hover:text-indigo-600 transition">Limpiar</button>
+ 
+            <!-- Barra de búsqueda rápida mobile -->
+            <div class="bg-white border-b border-slate-200 px-4 py-3 md:hidden">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="search-input-mobile" onkeyup="syncSearch(this)" placeholder="Buscar mayorista..." class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white">
+                    <button onclick="openMobileFilters()" class="absolute right-3 top-1/2 -translate-y-1/2 text-brand-600 font-semibold text-xs flex items-center gap-1">
+                        <i class="fa-solid fa-sliders text-xs"></i> Filtros
+                    </button>
+                </div>
+            </div>
+ 
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
+                <div class="flex gap-8 items-start">
+ 
+                    <!-- SIDEBAR FILTROS DESKTOP -->
+                    <aside class="hidden lg:block w-64 shrink-0">
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-5 sticky top-24">
+                            <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+                                <h3 class="font-outfit font-bold text-sm text-slate-900 flex items-center gap-2">
+                                    <i class="fa-solid fa-sliders text-brand-600 text-xs"></i> Filtros
+                                </h3>
+                                <button onclick="resetFilters()" class="text-xs font-semibold text-slate-400 hover:text-brand-600 transition">Limpiar</button>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">Buscar</label>
+                                <div class="relative">
+                                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                    <input type="text" id="search-input" onkeyup="filterDirectory()" placeholder="Nombre o rubro..." class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 pl-8 pr-3 text-sm transition">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">Rubro</label>
+                                <select id="filter-rubro" onchange="filterDirectory()" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-sm transition">
+                                    <option value="">Todos los rubros</option>
+                                    <option value="Bazar">Bazar & Decoración</option>
+                                    <option value="Indumentaria">Indumentaria & Ropa</option>
+                                    <option value="Calzado">Calzado</option>
+                                    <option value="Perfumería">Perfumería & Cosmética</option>
+                                    <option value="Electrónica">Electrónica & Tecnología</option>
+                                    <option value="Alimentos">Alimentos & Bebidas</option>
+                                    <option value="Ferretería">Ferretería & Construcción</option>
+                                    <option value="Juguetería">Juguetería & Cotillón</option>
+                                    <option value="Librería">Librería & Papelería</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">Provincia</label>
+                                <select id="filter-provincia" onchange="filterDirectory()" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-sm transition">
+                                    <option value="">Toda la Argentina</option>
+                                    <option value="CABA">CABA</option>
+                                    <option value="Buenos Aires">Buenos Aires</option>
+                                    <option value="Córdoba">Córdoba</option>
+                                    <option value="Santa Fe">Santa Fe</option>
+                                    <option value="Mendoza">Mendoza</option>
+                                    <option value="Tucumán">Tucumán</option>
+                                    <option value="Salta">Salta</option>
+                                    <option value="Misiones">Misiones</option>
+                                    <option value="Neuquén">Neuquén</option>
+                                    <option value="Entre Ríos">Entre Ríos</option>
+                                    <option value="Chaco">Chaco</option>
+                                    <option value="Corrientes">Corrientes</option>
+                                    <option value="Santiago del Estero">Santiago del Estero</option>
+                                    <option value="San Juan">San Juan</option>
+                                    <option value="Jujuy">Jujuy</option>
+                                    <option value="Río Negro">Río Negro</option>
+                                    <option value="Formosa">Formosa</option>
+                                    <option value="Chubut">Chubut</option>
+                                    <option value="San Luis">San Luis</option>
+                                    <option value="Catamarca">Catamarca</option>
+                                    <option value="La Rioja">La Rioja</option>
+                                    <option value="La Pampa">La Pampa</option>
+                                    <option value="Santa Cruz">Santa Cruz</option>
+                                    <option value="Tierra del Fuego">Tierra del Fuego</option>
+                                </select>
+                            </div>
+                        </div>
+                    </aside>
+ 
+                    <!-- GRILLA TIENDAS -->
+                    <div class="flex-1 min-w-0">
+                        <!-- Header resultado -->
+                        <div class="flex items-center justify-between mb-4">
+                            <p class="text-sm text-slate-500" id="result-count"></p>
+                        </div>
+                        <div id="grid-mayoristas" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5"></div>
                     </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">¿Qué buscás?</label>
-                        <input type="text" id="search-input" onkeyup="filterDirectory()" placeholder="Ej: bazar, camperas..." class="w-full bg-[#FAF9F6] border border-slate-200 rounded-xl py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Rubro</label>
-                        <select id="filter-rubro" onchange="filterDirectory()" class="w-full bg-[#FAF9F6] border border-slate-200 rounded-xl py-2 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
-                            <option value="">Todos los rubros</option>
-                            <option value="Bazar">Bazar & Decoración</option>
-                            <option value="Indumentaria">Indumentaria & Ropa</option>
-                            <option value="Calzado">Calzado</option>
-                            <option value="Perfumería">Perfumería & Cosmética</option>
-                            <option value="Otros">Otros</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Provincia</label>
-                        <select id="filter-provincia" onchange="filterDirectory()" class="w-full bg-[#FAF9F6] border border-slate-200 rounded-xl py-2 px-3 text-sm focus:outline-none">
-                            <option value="">Toda la Argentina</option>
-                            <option value="CABA">CABA</option>
-                            <option value="Buenos Aires">Buenos Aires</option>
-                            <option value="Córdoba">Córdoba</option>
-                            <option value="Santa Fe">Santa Fe</option>
-                            <option value="Mendoza">Mendoza</option>
-                        </select>
-                    </div>
-                </aside>
-
-                <!-- GRILLA -->
-                <div class="lg:col-span-3">
-                    <div id="grid-mayoristas" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
                 </div>
             </div>
         </section>
-
-        <!-- VISTA: PERFIL DETALLE -->
+ 
+        <!-- VISTA: PERFIL -->
         <section id="view-perfil" class="view-section hidden">
-            <button onclick="changeView('home')" class="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-indigo-600 transition">
-                <i class="fa-solid fa-arrow-left"></i> Volver al listado
-            </button>
-            <div id="perfil-info-wrapper" class="bg-white rounded-3xl border border-slate-200/60 shadow-sm overflow-hidden mb-8"></div>
-            <div class="bg-white rounded-3xl border border-slate-200/60 shadow-sm p-8">
-                <h3 class="font-outfit font-extrabold text-2xl text-slate-900 mb-6">Catálogo Destacado</h3>
-                <div id="perfil-productos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
+                <button onclick="changeView('home')" class="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-brand-600 transition">
+                    <i class="fa-solid fa-arrow-left text-xs"></i> Volver al directorio
+                </button>
+                <div id="perfil-info-wrapper" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mb-6"></div>
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8">
+                    <h3 class="font-outfit font-extrabold text-xl md:text-2xl text-slate-900 mb-6">Catálogo Destacado</h3>
+                    <div id="perfil-productos" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"></div>
+                </div>
             </div>
         </section>
-
-        <!-- VISTA: PANEL DE ADMINISTRACIÓN DE TIENDA -->
-        <section id="view-admin" class="view-section hidden max-w-4xl mx-auto">
-            <div class="flex justify-between items-center mb-8 border-b pb-4">
-                <div>
-                    <h2 class="font-outfit font-extrabold text-3xl text-slate-900">Panel de Control de tu Tienda</h2>
-                    <p class="text-sm text-slate-500">Gestioná la información y catálogo que ven los clientes en tiempo real</p>
-                </div>
-                <button onclick="logoutAdmin()" class="bg-slate-100 hover:bg-slate-200 text-slate-600 px-4 py-2 rounded-xl text-xs font-bold transition">Cerrar Sesión</button>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- FORMULARIO DE EDICIÓN DE TIENDA -->
-                <div class="md:col-span-2 bg-white p-6 rounded-2xl border space-y-6 shadow-sm">
-                    <h3 class="font-bold text-lg text-slate-800 border-b pb-2"><i class="fa-solid fa-pen-to-square text-indigo-600"></i> Datos de tu Distribuidora</h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">Nombre Comercial</label>
-                            <input type="text" id="admin-nombre" class="w-full bg-[#FAF9F6] border rounded-xl py-2 px-3 text-sm outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">Rubro</label>
-                            <select id="admin-rubro" class="w-full bg-[#FAF9F6] border rounded-xl py-2 px-3 text-sm outline-none">
-                                <option value="Bazar">Bazar & Decoración</option>
-                                <option value="Indumentaria">Indumentaria & Ropa</option>
-                                <option value="Calzado">Calzado</option>
-                                <option value="Perfumería">Perfumería & Cosmética</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">Provincia</label>
-                            <select id="admin-provincia" class="w-full bg-[#FAF9F6] border rounded-xl py-2 px-3 text-sm outline-none">
-                                <option value="CABA">CABA</option>
-                                <option value="Buenos Aires">Buenos Aires</option>
-                                <option value="Córdoba">Córdoba</option>
-                                <option value="Santa Fe">Santa Fe</option>
-                                <option value="Mendoza">Mendoza</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">Compra Mínima ($)</label>
-                            <input type="number" id="admin-minimo" class="w-full bg-[#FAF9F6] border rounded-xl py-2 px-3 text-sm outline-none">
-                        </div>
-                    </div>
-
+ 
+        <!-- VISTA: ADMIN -->
+        <section id="view-admin" class="view-section hidden">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-8 border-b pb-5">
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">Descripción del Negocio</label>
-                        <textarea id="admin-descripcion" rows="3" class="w-full bg-[#FAF9F6] border rounded-xl p-3 text-sm outline-none"></textarea>
+                        <h2 class="font-outfit font-extrabold text-2xl md:text-3xl text-slate-900">Panel de tu Tienda</h2>
+                        <p class="text-sm text-slate-400 mt-1">Los cambios que guardés son visibles para todos los visitantes</p>
                     </div>
-
-                    <div class="border-t pt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 mb-1">Subir Logo Corporativo</label>
-                            <input type="file" accept="image/*" onchange="uploadImageHandler(this, 'logo')" class="text-xs w-full">
-                            <div id="admin-preview-logo" class="mt-2 w-12 h-12 bg-slate-100 rounded-xl border overflow-hidden hidden"></div>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-600 mb-1">Subir Imagen Banner</label>
-                            <input type="file" accept="image/*" onchange="uploadImageHandler(this, 'banner')" class="text-xs w-full">
-                            <div id="admin-preview-banner" class="mt-2 h-12 w-full bg-slate-100 rounded-xl border overflow-hidden hidden"></div>
-                        </div>
-                    </div>
-
-                    <button onclick="guardarDatosTiendaAdmin()" class="w-full bg-indigo-600 text-white font-bold py-2.5 rounded-xl text-sm shadow-md hover:bg-indigo-700 transition">Guardar Cambios y Actualizar Mapa</button>
+                    <button onclick="logoutAdmin()" class="self-start sm:self-auto bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-500 px-4 py-2 rounded-xl text-xs font-bold transition border border-transparent hover:border-red-100 flex items-center gap-2">
+                        <i class="fa-solid fa-right-from-bracket text-xs"></i> Cerrar sesión
+                    </button>
                 </div>
-
-                <!-- GESTIÓN DE PRODUCTOS -->
-                <div class="bg-white p-6 rounded-2xl border shadow-sm space-y-4">
-                    <h3 class="font-bold text-lg text-slate-800 border-b pb-2"><i class="fa-solid fa-box text-indigo-600"></i> Tu Catálogo</h3>
-                    
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
-                        <input type="text" id="admin-prod-nombre" placeholder="Nombre del Artículo" class="w-full bg-white border p-2 text-xs rounded-lg outline-none">
-                        <input type="number" id="admin-prod-precio" placeholder="Precio ($)" class="w-full bg-white border p-2 text-xs rounded-lg outline-none">
-                        <input type="file" id="admin-prod-foto" accept="image/*" class="text-[10px] w-full">
-                        <button onclick="agregarProductoAdmin()" class="w-full bg-slate-900 text-white text-xs font-bold py-2 rounded-lg mt-2">Añadir Item</button>
+ 
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- FORMULARIO -->
+                    <div class="md:col-span-2 bg-white p-5 md:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+                        <h3 class="font-bold text-base text-slate-800 border-b pb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-pen-to-square text-brand-600 text-sm"></i> Datos de tu Distribuidora
+                        </h3>
+ 
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1.5">Nombre Comercial</label>
+                                <input type="text" id="admin-nombre" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1.5">Rubro</label>
+                                <select id="admin-rubro" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
+                                    <option value="Bazar">Bazar & Decoración</option>
+                                    <option value="Indumentaria">Indumentaria & Ropa</option>
+                                    <option value="Calzado">Calzado</option>
+                                    <option value="Perfumería">Perfumería & Cosmética</option>
+                                    <option value="Electrónica">Electrónica & Tecnología</option>
+                                    <option value="Alimentos">Alimentos & Bebidas</option>
+                                    <option value="Ferretería">Ferretería & Construcción</option>
+                                    <option value="Juguetería">Juguetería & Cotillón</option>
+                                    <option value="Librería">Librería & Papelería</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1.5">Provincia</label>
+                                <select id="admin-provincia" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
+                                    <option value="CABA">CABA</option>
+                                    <option value="Buenos Aires">Buenos Aires</option>
+                                    <option value="Córdoba">Córdoba</option>
+                                    <option value="Santa Fe">Santa Fe</option>
+                                    <option value="Mendoza">Mendoza</option>
+                                    <option value="Tucumán">Tucumán</option>
+                                    <option value="Salta">Salta</option>
+                                    <option value="Misiones">Misiones</option>
+                                    <option value="Neuquén">Neuquén</option>
+                                    <option value="Entre Ríos">Entre Ríos</option>
+                                    <option value="Chaco">Chaco</option>
+                                    <option value="Corrientes">Corrientes</option>
+                                    <option value="San Juan">San Juan</option>
+                                    <option value="Jujuy">Jujuy</option>
+                                    <option value="Río Negro">Río Negro</option>
+                                    <option value="San Luis">San Luis</option>
+                                    <option value="Catamarca">Catamarca</option>
+                                    <option value="La Rioja">La Rioja</option>
+                                    <option value="Santiago del Estero">Santiago del Estero</option>
+                                    <option value="Tierra del Fuego">Tierra del Fuego</option>
+                                    <option value="Chubut">Chubut</option>
+                                    <option value="Santa Cruz">Santa Cruz</option>
+                                    <option value="La Pampa">La Pampa</option>
+                                    <option value="Formosa">Formosa</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1.5">Compra Mínima ($)</label>
+                                <input type="number" id="admin-minimo" placeholder="Ej: 50000" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
+                            </div>
+                        </div>
+ 
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 mb-1.5">Descripción del Negocio</label>
+                            <textarea id="admin-descripcion" rows="3" placeholder="Contá brevemente qué ofrecen, a qué zonas llegan, condiciones de entrega..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm resize-none"></textarea>
+                        </div>
+ 
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-500 mb-1.5">WhatsApp de contacto</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">+54</span>
+                                <input type="tel" id="admin-whatsapp" placeholder="9 11 1234-5678" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 pl-12 pr-3 text-sm">
+                            </div>
+                        </div>
+ 
+                        <div class="border-t pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1.5">Logo corporativo</label>
+                                <input type="file" accept="image/*" onchange="uploadImageHandler(this, 'logo')" class="text-xs w-full file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:bg-brand-50 file:text-brand-700 file:font-semibold file:text-xs hover:file:bg-brand-100 transition">
+                                <div id="admin-preview-logo" class="mt-2 w-12 h-12 bg-slate-100 rounded-xl border overflow-hidden hidden"></div>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1.5">Imagen banner</label>
+                                <input type="file" accept="image/*" onchange="uploadImageHandler(this, 'banner')" class="text-xs w-full file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:bg-brand-50 file:text-brand-700 file:font-semibold file:text-xs hover:file:bg-brand-100 transition">
+                                <div id="admin-preview-banner" class="mt-2 h-12 w-full bg-slate-100 rounded-xl border overflow-hidden hidden"></div>
+                            </div>
+                        </div>
+ 
+                        <button onclick="guardarDatosTiendaAdmin()" class="w-full bg-brand-600 text-white font-bold py-3 rounded-xl text-sm shadow hover:bg-brand-700 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-floppy-disk"></i> Guardar y publicar cambios
+                        </button>
                     </div>
-
-                    <div id="admin-lista-productos" class="space-y-2 max-h-60 overflow-y-auto pt-2"></div>
+ 
+                    <!-- CATÁLOGO -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                        <h3 class="font-bold text-base text-slate-800 border-b pb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-box text-brand-600 text-sm"></i> Tu Catálogo
+                        </h3>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2">
+                            <input type="text" id="admin-prod-nombre" placeholder="Nombre del artículo" class="w-full bg-white border border-slate-200 p-2.5 text-xs rounded-lg">
+                            <input type="number" id="admin-prod-precio" placeholder="Precio ($)" class="w-full bg-white border border-slate-200 p-2.5 text-xs rounded-lg">
+                            <label class="block text-[10px] font-bold text-slate-400 mt-1">Foto del producto (opcional)</label>
+                            <input type="file" id="admin-prod-foto" accept="image/*" class="text-[10px] w-full">
+                            <button onclick="agregarProductoAdmin()" class="w-full bg-slate-900 hover:bg-slate-700 text-white text-xs font-bold py-2.5 rounded-lg mt-1 transition flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-plus text-[10px]"></i> Añadir al catálogo
+                            </button>
+                        </div>
+                        <div id="admin-lista-productos" class="space-y-2 max-h-64 overflow-y-auto"></div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
-
-    <!-- MODAL INTEGRADO: REGISTRO -> VERIFICACIÓN -->
-    <div id="modal-auth" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl border p-6 space-y-6">
-            
-            <!-- FASE A: REGISTRO DE EMAIL Y CONTRASEÑA -->
-            <div id="auth-fase-registro" class="space-y-4">
-                <div class="text-center">
-                    <h3 class="font-outfit font-extrabold text-2xl text-slate-900">Creá tu Cuenta Mayorista</h3>
-                    <p class="text-xs text-slate-400 mt-1">Registrate con tu mail de contacto para acceder a tu panel de tienda</p>
+ 
+    <!-- ===== SECCIÓN: CÓMO FUNCIONA ===== -->
+    <section id="como-funciona" class="bg-white border-t border-slate-200 py-16 md:py-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-100 text-brand-700 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+                    ¿Cómo funciona?
                 </div>
+                <h2 class="font-outfit font-extrabold text-3xl md:text-4xl text-slate-900 tracking-tight">Simple y sin vueltas</h2>
+                <p class="text-slate-500 mt-3 max-w-lg mx-auto text-sm md:text-base">Al Mayoreo es 100% gratuito. Nunca cobramos comisiones ni cuotas. El trato es directo entre vos y el mayorista.</p>
+            </div>
+ 
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center space-y-3">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center mx-auto text-2xl">🔍</div>
+                    <h3 class="font-bold text-slate-900">Explorás el directorio</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Filtrás por rubro, provincia o nombre. Encontrás el mayorista que necesitás en segundos.</p>
+                </div>
+                <div class="text-center space-y-3">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center mx-auto text-2xl">📦</div>
+                    <h3 class="font-bold text-slate-900">Ves su catálogo</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Revisás sus productos, precios orientativos y condiciones de compra mínima antes de contactar.</p>
+                </div>
+                <div class="text-center space-y-3">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center mx-auto text-2xl">🤝</div>
+                    <h3 class="font-bold text-slate-900">Contacto directo</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Te conectás directamente con el mayorista por WhatsApp o mail. Sin intermediarios, sin comisiones.</p>
+                </div>
+            </div>
+ 
+            <!-- Para mayoristas -->
+            <div class="mt-14 bg-gradient-to-br from-brand-600 to-violet-700 rounded-2xl p-6 md:p-8 text-white flex flex-col md:flex-row gap-6 items-center justify-between">
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-brand-200 mb-2">¿Sos mayorista o distribuidor?</div>
+                    <h3 class="font-outfit font-extrabold text-xl md:text-2xl">Sumá tu tienda gratis</h3>
+                    <p class="text-brand-200 text-sm mt-2 max-w-md">Registrá tu distribuidora, cargá tu catálogo y empezá a recibir consultas de minoristas de todo el país. Es rápido, gratuito y sin compromisos.</p>
+                </div>
+                <button onclick="openAuthModal()" class="shrink-0 bg-white text-brand-700 hover:bg-brand-50 px-6 py-3 rounded-xl font-bold text-sm shadow transition whitespace-nowrap">
+                    Registrar mi tienda →
+                </button>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- ===== FOOTER / CONTACTO ===== -->
+    <footer id="contacto" class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+                <!-- Marca -->
+                <div>
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <div class="h-9 w-9 bg-brand-600 rounded-xl flex items-center justify-center text-white">
+                            <i class="fa-solid fa-boxes-packing text-sm"></i>
+                        </div>
+                        <span class="font-outfit font-extrabold text-white text-xl">AL MAYOREO</span>
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-500">Directorio mayorista argentino. Conectamos minoristas con distribuidores directos de todo el país.</p>
+                </div>
+ 
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-4">Plataforma</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><button onclick="changeView('home')" class="hover:text-white transition">Explorar directorio</button></li>
+                        <li><button onclick="openAuthModal()" class="hover:text-white transition">Registrar mi tienda</button></li>
+                        <li><button onclick="scrollToSection('como-funciona')" class="hover:text-white transition">Cómo funciona</button></li>
+                    </ul>
+                </div>
+ 
+                <!-- Contacto y legal -->
+                <div>
+                    <h4 class="text-white font-semibold text-sm mb-4">Contacto y legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="mailto:contacto@almayoreo.com.ar" class="hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-envelope text-xs"></i> contacto@almayoreo.com.ar</a></li>
+                        <li><button onclick="openModal('modal-privacidad')" class="hover:text-white transition">Política de Privacidad</button></li>
+                        <li><button onclick="openModal('modal-terminos')" class="hover:text-white transition">Términos y Condiciones</button></li>
+                    </ul>
+                </div>
+            </div>
+ 
+            <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-600">
+                <span>© 2025 Al Mayoreo. Hecho en Argentina 🇦🇷</span>
+                <span>Los datos de los comercios son provistos por sus propietarios.</span>
+            </div>
+        </div>
+    </footer>
+ 
+    <!-- ===== MODAL AUTH ===== -->
+    <div id="modal-auth" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl border border-slate-200 overflow-hidden">
+            <!-- Fase A: Registro -->
+            <div id="auth-fase-registro" class="p-6 space-y-5">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fa-solid fa-shop text-brand-600 text-lg"></i>
+                    </div>
+                    <h3 class="font-outfit font-extrabold text-xl text-slate-900">Creá tu cuenta</h3>
+                    <p class="text-xs text-slate-400 mt-1">Registrate para gestionar tu tienda mayorista</p>
+                </div>
+ 
                 <div class="space-y-3">
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">Correo Electrónico *</label>
-                        <input type="email" id="auth-email" required placeholder="ejemplo@comercio.com" class="w-full bg-[#FAF9F6] border rounded-xl py-2.5 px-3 text-sm outline-none">
+                        <label class="block text-[11px] font-bold text-slate-500 mb-1.5">Correo electrónico</label>
+                        <input type="email" id="auth-email" placeholder="tu@comercio.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">Contraseña de Seguridad *</label>
-                        <input type="password" id="auth-password" required placeholder="••••••••" class="w-full bg-[#FAF9F6] border rounded-xl py-2.5 px-3 text-sm outline-none">
+                        <label class="block text-[11px] font-bold text-slate-500 mb-1.5">Contraseña</label>
+                        <input type="password" id="auth-password" placeholder="Mínimo 8 caracteres" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
                     </div>
                 </div>
-                <button onclick="procesarFaseRegistro()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl text-sm shadow-md transition">Registrarme e Iniciar</button>
-                <button onclick="closeAuthModal()" class="w-full text-xs text-slate-400 hover:text-slate-600 transition text-center block">Cancelar</button>
+ 
+                <!-- Aviso de seguridad y privacidad -->
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex gap-2.5 items-start">
+                    <i class="fa-solid fa-lock text-amber-500 text-xs mt-0.5 shrink-0"></i>
+                    <p class="text-xs text-amber-800 leading-relaxed">Tus datos se usan únicamente para gestionar tu tienda. No los compartimos con terceros. <button onclick="openModal('modal-privacidad'); closeAuthModal()" class="underline font-semibold">Ver política de privacidad.</button></p>
+                </div>
+ 
+                <div class="space-y-2">
+                    <button onclick="procesarFaseRegistro()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl text-sm shadow transition">
+                        Continuar
+                    </button>
+                    <button onclick="closeAuthModal()" class="w-full text-xs text-slate-400 hover:text-slate-600 transition py-1.5">Cancelar</button>
+                </div>
             </div>
-
-            <!-- FASE B: VERIFICACIÓN IMPRESCINDIBLE DE CORREO -->
-            <div id="auth-fase-verificacion" class="space-y-4 hidden">
+ 
+            <!-- Fase B: Verificación -->
+            <div id="auth-fase-verificacion" class="p-6 space-y-5 hidden">
                 <div class="text-center">
-                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl shadow-inner"><i class="fa-solid fa-envelope-shield"></i></div>
-                    <h3 class="font-outfit font-extrabold text-xl text-slate-900">Verificá tu Correo</h3>
-                    <p class="text-xs text-slate-500 mt-1">Ingresá el token de seguridad temporal provisto para validar tu cuenta:</p>
-                    <div class="bg-amber-50 border border-amber-200 text-amber-800 rounded-lg p-2 font-mono font-bold my-3 text-lg tracking-widest" id="simulated-pin-box"></div>
+                    <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <i class="fa-solid fa-envelope text-amber-500 text-lg"></i>
+                    </div>
+                    <h3 class="font-outfit font-extrabold text-xl text-slate-900">Verificá tu correo</h3>
+                    <p class="text-xs text-slate-500 mt-1">Ingresá el código de 4 dígitos para confirmar tu cuenta</p>
+                    <!-- PIN simulado — en producción esto llega por email real -->
+                    <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 font-mono font-black my-4 text-xl tracking-widest text-amber-700" id="simulated-pin-box"></div>
+                    <p class="text-[10px] text-slate-400">⚠️ Este es un código simulado. En la versión final, llega a tu email real.</p>
                 </div>
-                <div>
-                    <input type="text" id="auth-pin-input" maxlength="4" placeholder="Ingresá los 4 dígitos" class="w-full bg-[#FAF9F6] border rounded-xl py-2.5 text-center text-lg font-bold outline-none tracking-widest focus:ring-2 focus:ring-indigo-500">
-                </div>
-                <button onclick="procesarFaseVerificacion()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl text-sm shadow-md transition">Confirmar Token y Entrar al Panel</button>
+                <input type="text" id="auth-pin-input" maxlength="4" placeholder="· · · ·" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 text-center text-2xl font-black tracking-widest">
+                <button onclick="procesarFaseVerificacion()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl text-sm shadow transition">
+                    Confirmar y entrar al panel
+                </button>
             </div>
         </div>
     </div>
-
+ 
+    <!-- ===== MODAL FILTROS MOBILE ===== -->
+    <div id="modal-filtros-mobile" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-end">
+        <div class="bg-white w-full rounded-t-2xl p-5 space-y-5 max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-slate-900">Filtros</h3>
+                <button onclick="closeMobileFilters()" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-500"><i class="fa-solid fa-x text-xs"></i></button>
+            </div>
+            <div>
+                <label class="block text-[11px] font-bold text-slate-500 mb-2">Rubro</label>
+                <select id="filter-rubro-mobile" onchange="syncFilters(this, 'rubro')" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
+                    <option value="">Todos los rubros</option>
+                    <option value="Bazar">Bazar & Decoración</option>
+                    <option value="Indumentaria">Indumentaria & Ropa</option>
+                    <option value="Calzado">Calzado</option>
+                    <option value="Perfumería">Perfumería & Cosmética</option>
+                    <option value="Electrónica">Electrónica & Tecnología</option>
+                    <option value="Alimentos">Alimentos & Bebidas</option>
+                    <option value="Ferretería">Ferretería & Construcción</option>
+                    <option value="Juguetería">Juguetería & Cotillón</option>
+                    <option value="Librería">Librería & Papelería</option>
+                    <option value="Otros">Otros</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-[11px] font-bold text-slate-500 mb-2">Provincia</label>
+                <select id="filter-provincia-mobile" onchange="syncFilters(this, 'provincia')" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
+                    <option value="">Toda la Argentina</option>
+                    <option value="CABA">CABA</option>
+                    <option value="Buenos Aires">Buenos Aires</option>
+                    <option value="Córdoba">Córdoba</option>
+                    <option value="Santa Fe">Santa Fe</option>
+                    <option value="Mendoza">Mendoza</option>
+                    <option value="Tucumán">Tucumán</option>
+                    <option value="Salta">Salta</option>
+                    <option value="Misiones">Misiones</option>
+                    <option value="Neuquén">Neuquén</option>
+                    <option value="Entre Ríos">Entre Ríos</option>
+                </select>
+            </div>
+            <button onclick="closeMobileFilters()" class="w-full bg-brand-600 text-white font-bold py-3 rounded-xl text-sm">Aplicar filtros</button>
+            <button onclick="resetFilters(); closeMobileFilters()" class="w-full text-xs text-slate-400 py-1">Limpiar todo</button>
+        </div>
+    </div>
+ 
+    <!-- ===== MODAL PRIVACIDAD ===== -->
+    <div id="modal-privacidad" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden">
+            <div class="flex justify-between items-center px-6 py-4 border-b">
+                <h3 class="font-outfit font-bold text-lg text-slate-900">Política de Privacidad</h3>
+                <button onclick="closeModal('modal-privacidad')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 transition"><i class="fa-solid fa-x text-xs"></i></button>
+            </div>
+            <div class="p-6 text-sm text-slate-600 space-y-4 max-h-[60vh] overflow-y-auto leading-relaxed">
+                <p><strong class="text-slate-800">1. Datos que recolectamos.</strong> Al registrarte, recolectamos tu dirección de correo electrónico y contraseña. Los datos públicos de tu tienda (nombre, rubro, provincia, catálogo) son visibles para todos los visitantes.</p>
+                <p><strong class="text-slate-800">2. Uso de los datos.</strong> Los datos personales se utilizan exclusivamente para autenticarte y asociarlos a tu tienda. No los vendemos, cedemos ni compartimos con terceros con fines comerciales.</p>
+                <p><strong class="text-slate-800">3. Almacenamiento.</strong> Actualmente los datos se almacenan en el dispositivo del usuario mediante <code class="bg-slate-100 px-1 rounded">localStorage</code>. En la versión con backend, se almacenarán en servidores seguros con encriptación en tránsito (HTTPS) y en reposo.</p>
+                <p><strong class="text-slate-800">4. Ley 25.326.</strong> En cumplimiento de la Ley Nacional de Protección de Datos Personales (Nº 25.326), podés solicitar en cualquier momento el acceso, rectificación o eliminación de tus datos escribiendo a <a href="mailto:contacto@almayoreo.com.ar" class="text-brand-600 underline">contacto@almayoreo.com.ar</a>.</p>
+                <p><strong class="text-slate-800">5. Cookies.</strong> Usamos <code class="bg-slate-100 px-1 rounded">sessionStorage</code> para mantener tu sesión activa mientras usás el sitio. No utilizamos cookies de rastreo ni publicidad.</p>
+                <p class="text-slate-400 text-xs">Última actualización: junio 2025</p>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- ===== MODAL TÉRMINOS ===== -->
+    <div id="modal-terminos" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden">
+            <div class="flex justify-between items-center px-6 py-4 border-b">
+                <h3 class="font-outfit font-bold text-lg text-slate-900">Términos y Condiciones</h3>
+                <button onclick="closeModal('modal-terminos')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 transition"><i class="fa-solid fa-x text-xs"></i></button>
+            </div>
+            <div class="p-6 text-sm text-slate-600 space-y-4 max-h-[60vh] overflow-y-auto leading-relaxed">
+                <p><strong class="text-slate-800">1. Objeto.</strong> Al Mayoreo es un directorio digital gratuito que facilita el contacto entre comercios minoristas y distribuidores/fabricantes mayoristas de Argentina.</p>
+                <p><strong class="text-slate-800">2. Registro de tiendas.</strong> Al registrar una tienda, el titular declara que posee autorización legal para representar al comercio y que la información publicada es veraz, actual y no infringe derechos de terceros.</p>
+                <p><strong class="text-slate-800">3. Gratuidad.</strong> El uso de la plataforma es gratuito para todas las partes. Al Mayoreo no cobra comisiones, suscripciones ni honorarios de ningún tipo.</p>
+                <p><strong class="text-slate-800">4. Responsabilidad.</strong> Al Mayoreo actúa como directorio intermediario. Las transacciones comerciales, precios, condiciones de entrega y cualquier acuerdo entre partes son de exclusiva responsabilidad de los comercios involucrados.</p>
+                <p><strong class="text-slate-800">5. Contenido.</strong> Queda prohibido publicar contenido falso, engañoso, ilegal o que viole derechos de terceros. Al Mayoreo se reserva el derecho de eliminar registros que incumplan estas condiciones.</p>
+                <p><strong class="text-slate-800">6. Jurisdicción.</strong> Cualquier controversia se someterá a la jurisdicción de los Tribunales Ordinarios de la Ciudad de Buenos Aires, Argentina.</p>
+                <p class="text-slate-400 text-xs">Última actualización: junio 2025</p>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- ========== SCRIPTS ========== -->
     <script>
-        // Datos Mock Base de muestra
+        // ── Datos semilla ──────────────────────────────────────────────
         const datosSemilla = [
-            { id: 1, email: "sur@mayorista.com", nombre: "Distribuidora Sur", rubro: "Indumentaria", provincia: "Córdoba", minimo: 60000, logo: null, banner: null, descripcion: "Fabricantes directos de indumentaria textil. Envíos garantizados.", productos: [] }
+            {
+                id: 1,
+                email: "sur@mayorista.com",
+                nombre: "Distribuidora Sur",
+                rubro: "Indumentaria",
+                provincia: "Córdoba",
+                minimo: 60000,
+                whatsapp: "",
+                logo: null,
+                banner: null,
+                descripcion: "Fabricantes directos de indumentaria textil. Envíos garantizados a todo el país. Trabajamos con talles especiales y colecciones de temporada.",
+                productos: []
+            }
         ];
-
-        // Inicialización Persistente con localStorage para solventar pérdidas en GitHub Pages
+ 
         let baseMayoristas = JSON.parse(localStorage.getItem('AL_MAYOREO_TIENDAS')) || datosSemilla;
         let mayoristasActuales = [...baseMayoristas];
-        let tiendaActivaAdmin = null; 
+        let tiendaActivaAdmin = null;
         let currentGeneratedPIN = "";
         let tempProductImage = null;
-
-        window.addEventListener('DOMContentLoaded', () => { renderDirectory(); checkPersistedSession(); });
-
-        function saveToStorage() { localStorage.setItem('AL_MAYOREO_TIENDAS', JSON.stringify(baseMayoristas)); }
-
+ 
+        // ── Init ──────────────────────────────────────────────────────
+        window.addEventListener('DOMContentLoaded', () => {
+            renderDirectory();
+            checkPersistedSession();
+            updateStatCount();
+        });
+ 
+        function saveToStorage() {
+            localStorage.setItem('AL_MAYOREO_TIENDAS', JSON.stringify(baseMayoristas));
+        }
+ 
+        function updateStatCount() {
+            const el = document.getElementById('stat-tiendas');
+            if (el) el.textContent = baseMayoristas.length;
+        }
+ 
+        // ── Render directorio ─────────────────────────────────────────
         function renderDirectory() {
             const grid = document.getElementById('grid-mayoristas');
+            const countEl = document.getElementById('result-count');
             grid.innerHTML = '';
+ 
+            if (mayoristasActuales.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state col-span-full">
+                        <div class="text-4xl mb-2">🔍</div>
+                        <p class="font-semibold text-slate-600 text-base">Sin resultados</p>
+                        <p class="text-slate-400 text-sm max-w-xs">Probá cambiando los filtros o buscando otro término.</p>
+                        <button onclick="resetFilters()" class="mt-3 text-xs font-semibold text-brand-600 hover:underline">Limpiar filtros</button>
+                    </div>`;
+                if (countEl) countEl.textContent = '0 tiendas encontradas';
+                return;
+            }
+ 
+            if (countEl) countEl.textContent = `${mayoristasActuales.length} tienda${mayoristasActuales.length !== 1 ? 's' : ''} encontrada${mayoristasActuales.length !== 1 ? 's' : ''}`;
+ 
             mayoristasActuales.forEach(tienda => {
-                const tieneLogo = tienda.logo ? `<img src="${tienda.logo}" class="w-full h-full object-cover">` : `<i class="fa-solid fa-shop text-indigo-600"></i>`;
+                const logoHtml = tienda.logo
+                    ? `<img src="${tienda.logo}" class="w-full h-full object-cover">`
+                    : `<div class="w-full h-full flex items-center justify-center text-xl bg-brand-50 text-brand-400 font-black font-outfit">${(tienda.nombre || '?')[0].toUpperCase()}</div>`;
+ 
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-2xl border border-slate-200/70 shadow-sm p-6 flex flex-col justify-between hover:border-indigo-200 transition";
+                card.className = "bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between card-hover cursor-pointer";
+                card.onclick = () => verPerfilTienda(tienda.id);
                 card.innerHTML = `
                     <div>
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center font-bold overflow-hidden border border-indigo-100">${tieneLogo}</div>
-                            <div>
-                                <h3 class="font-bold text-slate-900 text-base">${tienda.nombre || 'Tienda Nueva'}</h3>
-                                <div class="flex flex-wrap gap-1.5 mt-1">
-                                    <span class="text-[11px] font-semibold bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-md">${tienda.rubro || 'Sin rubro'}</span>
-                                    <span class="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md"><i class="fa-solid fa-location-dot"></i> ${tienda.provincia || 'Argentina'}</span>
+                        <div class="flex items-start gap-3 mb-3">
+                            <div class="w-11 h-11 rounded-xl overflow-hidden border border-slate-100 shrink-0">${logoHtml}</div>
+                            <div class="min-w-0">
+                                <h3 class="font-bold text-slate-900 text-sm leading-tight truncate">${tienda.nombre || 'Tienda nueva'}</h3>
+                                <div class="flex flex-wrap gap-1 mt-1.5">
+                                    <span class="badge bg-brand-50 text-brand-700">${tienda.rubro || 'Sin rubro'}</span>
+                                    <span class="badge bg-slate-100 text-slate-500"><i class="fa-solid fa-location-dot text-[9px]"></i> ${tienda.provincia || 'Argentina'}</span>
                                 </div>
                             </div>
                         </div>
-                        <p class="text-slate-500 text-sm line-clamp-2 leading-relaxed">${tienda.descripcion || 'Sin descripción cargada en el panel.'}</p>
+                        <p class="text-slate-400 text-xs leading-relaxed line-clamp-2">${tienda.descripcion || 'Sin descripción cargada.'}</p>
                     </div>
-                    <div class="pt-4 mt-5 border-t border-slate-100 flex justify-between items-center">
+                    <div class="pt-4 mt-4 border-t border-slate-100 flex justify-between items-center">
                         <div>
-                            <span class="block text-[10px] text-slate-400 font-bold uppercase">Mínimo Compra</span>
-                            <span class="text-base font-extrabold text-slate-800">$${(tienda.minimo || 0).toLocaleString('es-AR')}</span>
+                            <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wide">Compra mínima</span>
+                            <span class="text-sm font-extrabold text-slate-800">$${(tienda.minimo || 0).toLocaleString('es-AR')}</span>
                         </div>
-                        <button onclick="verPerfilTienda(${tienda.id})" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm">Ver Catálogo</button>
+                        <span class="text-brand-600 font-semibold text-xs flex items-center gap-1 hover:gap-2 transition-all">Ver catálogo <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
-
-        // CONTROL DE FLUJO MULTIPASO
+ 
+        // ── Filtros ───────────────────────────────────────────────────
+        function filterDirectory() {
+            const query = (document.getElementById('search-input')?.value || document.getElementById('search-input-mobile')?.value || '').toLowerCase();
+            const rubro = document.getElementById('filter-rubro')?.value || '';
+            const provincia = document.getElementById('filter-provincia')?.value || '';
+ 
+            mayoristasActuales = baseMayoristas.filter(t => {
+                const cQ = !query || (t.nombre || '').toLowerCase().includes(query) || (t.descripcion || '').toLowerCase().includes(query) || (t.rubro || '').toLowerCase().includes(query);
+                const cR = !rubro || t.rubro === rubro;
+                const cP = !provincia || t.provincia === provincia;
+                return cQ && cR && cP;
+            });
+            renderDirectory();
+        }
+ 
+        function syncSearch(el) {
+            const desktop = document.getElementById('search-input');
+            if (desktop) desktop.value = el.value;
+            filterDirectory();
+        }
+ 
+        function syncFilters(el, tipo) {
+            if (tipo === 'rubro') {
+                const d = document.getElementById('filter-rubro');
+                if (d) d.value = el.value;
+            } else {
+                const d = document.getElementById('filter-provincia');
+                if (d) d.value = el.value;
+            }
+            filterDirectory();
+        }
+ 
+        function resetFilters() {
+            ['filter-rubro','filter-provincia','search-input','filter-rubro-mobile','filter-provincia-mobile','search-input-mobile'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+            mayoristasActuales = [...baseMayoristas];
+            renderDirectory();
+        }
+ 
+        // ── Auth ──────────────────────────────────────────────────────
         function openAuthModal() {
             document.getElementById('modal-auth').classList.remove('hidden');
             document.getElementById('auth-fase-registro').classList.remove('hidden');
             document.getElementById('auth-fase-verificacion').classList.add('hidden');
         }
-        function closeAuthModal() { document.getElementById('modal-auth').classList.add('hidden'); }
-
+ 
+        function closeAuthModal() {
+            document.getElementById('modal-auth').classList.add('hidden');
+        }
+ 
         function procesarFaseRegistro() {
-            const email = document.getElementById('auth-email').value;
+            const email = document.getElementById('auth-email').value.trim();
             const pass = document.getElementById('auth-password').value;
-            if(!email || !pass) { showToast("Completá todos los campos"); return; }
-
-            // Generar código de validación interactivo
+            if (!email || !pass) { showToast("Completá todos los campos", 'error'); return; }
+            if (pass.length < 6) { showToast("La contraseña debe tener al menos 6 caracteres", 'error'); return; }
             currentGeneratedPIN = Math.floor(1000 + Math.random() * 9000).toString();
-            document.getElementById('simulated-pin-box').textContent = `CÓDIGO: ${currentGeneratedPIN}`;
-
+            document.getElementById('simulated-pin-box').textContent = currentGeneratedPIN;
             document.getElementById('auth-fase-registro').classList.add('hidden');
             document.getElementById('auth-fase-verificacion').classList.remove('hidden');
         }
-
+ 
         function procesarFaseVerificacion() {
-            const pinIngresado = document.getElementById('auth-pin-input').value;
-            if(pinIngresado !== currentGeneratedPIN) { showToast("Código de verificación incorrecto"); return; }
-
-            const email = document.getElementById('auth-email').value;
-            
-            // Buscar si ya existe la tienda asociada a este mail o crear una en blanco
+            const pin = document.getElementById('auth-pin-input').value;
+            if (pin !== currentGeneratedPIN) { showToast("Código incorrecto", 'error'); return; }
+            const email = document.getElementById('auth-email').value.trim();
             let tienda = baseMayoristas.find(t => t.email === email);
-            if(!tienda) {
-                tienda = { id: baseMayoristas.length + 1, email: email, nombre: "", rubro: "Bazar", provincia: "CABA", minimo: 0, logo: null, banner: null, descripcion: "", productos: [] };
+            if (!tienda) {
+                tienda = { id: Date.now(), email, nombre: '', rubro: 'Bazar', provincia: 'CABA', minimo: 0, whatsapp: '', logo: null, banner: null, descripcion: '', productos: [] };
                 baseMayoristas.push(tienda);
                 saveToStorage();
+                updateStatCount();
             }
-
             tiendaActivaAdmin = tienda;
             sessionStorage.setItem('SESION_MAYORISTA_EMAIL', email);
             closeAuthModal();
             openAdminPanel(tienda);
-            showToast("✓ Cuenta verificada con éxito.");
+            showToast("✓ Cuenta verificada. ¡Bienvenido a tu panel!");
         }
-
-        // MANEJO DEL PANEL DE ADMINISTRACIÓN
+ 
+        // ── Panel admin ───────────────────────────────────────────────
         function openAdminPanel(tienda) {
             changeView('admin');
-            document.getElementById('admin-nombre').value = tienda.nombre;
-            document.getElementById('admin-rubro').value = tienda.rubro;
-            document.getElementById('admin-provincia').value = tienda.provincia;
-            document.getElementById('admin-minimo').value = tienda.minimo;
-            document.getElementById('admin-descripcion').value = tienda.descripcion;
-            
+            document.getElementById('admin-nombre').value = tienda.nombre || '';
+            document.getElementById('admin-rubro').value = tienda.rubro || 'Bazar';
+            document.getElementById('admin-provincia').value = tienda.provincia || 'CABA';
+            document.getElementById('admin-minimo').value = tienda.minimo || '';
+            document.getElementById('admin-descripcion').value = tienda.descripcion || '';
+            const wa = document.getElementById('admin-whatsapp');
+            if (wa) wa.value = tienda.whatsapp || '';
             renderPreviewsAdmin(tienda);
             renderProductosAdmin(tienda);
-            
             document.getElementById('nav-auth-buttons').innerHTML = `
-                <button onclick="changeView('admin')" class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2.5 rounded-xl font-semibold text-sm shadow-md transition mr-2">Mi Panel</button>
-            `;
+                <button onclick="changeView('admin')" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-xl font-semibold text-xs shadow transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-gauge text-xs"></i> Mi Panel
+                </button>`;
         }
-
+ 
         function renderPreviewsAdmin(tienda) {
-            const pLogo = document.getElementById('admin-preview-logo');
-            const pBanner = document.getElementById('admin-preview-banner');
-            if(tienda.logo) { pLogo.innerHTML = `<img src="${tienda.logo}" class="w-full h-full object-cover">`; pLogo.classList.remove('hidden'); }
-            if(tienda.banner) { pBanner.innerHTML = `<img src="${tienda.banner}" class="w-full h-full object-cover">`; pBanner.classList.remove('hidden'); }
+            const pL = document.getElementById('admin-preview-logo');
+            const pB = document.getElementById('admin-preview-banner');
+            if (tienda.logo) { pL.innerHTML = `<img src="${tienda.logo}" class="w-full h-full object-cover">`; pL.classList.remove('hidden'); }
+            if (tienda.banner) { pB.innerHTML = `<img src="${tienda.banner}" class="w-full h-full object-cover">`; pB.classList.remove('hidden'); }
         }
-
+ 
         function uploadImageHandler(input, tipo) {
             const file = input.files[0];
-            if(!file || !tiendaActivaAdmin) return;
+            if (!file || !tiendaActivaAdmin) return;
             const r = new FileReader();
-            r.onload = function(e) {
-                if(tipo === 'logo') { tiendaActivaAdmin.logo = e.target.result; }
-                if(tipo === 'banner') { tiendaActivaAdmin.banner = e.target.result; }
+            r.onload = e => {
+                if (tipo === 'logo') tiendaActivaAdmin.logo = e.target.result;
+                if (tipo === 'banner') tiendaActivaAdmin.banner = e.target.result;
                 renderPreviewsAdmin(tiendaActivaAdmin);
             };
             r.readAsDataURL(file);
         }
-
-        // Capturar foto del producto del panel
-        document.getElementById('admin-prod-foto')?.addEventListener('change', function(e) {
+ 
+        document.getElementById('admin-prod-foto')?.addEventListener('change', e => {
             const file = e.target.files[0];
-            if(!file) return;
+            if (!file) return;
             const reader = new FileReader();
-            reader.onload = (el) => { tempProductImage = el.target.result; };
+            reader.onload = ev => { tempProductImage = ev.target.result; };
             reader.readAsDataURL(file);
         });
-
+ 
         function agregarProductoAdmin() {
-            const nom = document.getElementById('admin-prod-nombre').value;
+            const nom = document.getElementById('admin-prod-nombre').value.trim();
             const pre = document.getElementById('admin-prod-precio').value;
-            if(!nom || !pre) { showToast("Faltan datos del producto"); return; }
-
-            tiendaActivaAdmin.productos.push({ nombre: nom, precio: parseFloat(pre), foto: tempProductImage });
+            if (!nom || !pre) { showToast("Completá nombre y precio", 'error'); return; }
+            tiendaActivaAdmin.productos.push({ id: Date.now(), nombre: nom, precio: parseFloat(pre), foto: tempProductImage });
             tempProductImage = null;
-            document.getElementById('admin-prod-nombre').value = "";
-            document.getElementById('admin-prod-precio').value = "";
-            document.getElementById('admin-prod-foto').value = "";
-            
+            ['admin-prod-nombre','admin-prod-precio','admin-prod-foto'].forEach(id => document.getElementById(id).value = '');
             renderProductosAdmin(tiendaActivaAdmin);
-            showToast("Item añadido");
+            showToast("Artículo añadido al catálogo");
         }
-
+ 
         function eliminarProductoAdmin(index) {
             tiendaActivaAdmin.productos.splice(index, 1);
             renderProductosAdmin(tiendaActivaAdmin);
         }
-
+ 
         function renderProductosAdmin(tienda) {
             const box = document.getElementById('admin-lista-productos');
             box.innerHTML = '';
+            if (!tienda.productos.length) {
+                box.innerHTML = '<p class="text-xs text-slate-400 text-center py-4">Tu catálogo está vacío. Agregá artículos arriba.</p>';
+                return;
+            }
             tienda.productos.forEach((p, idx) => {
+                const thumb = p.foto ? `<img src="${p.foto}" class="w-8 h-8 object-cover rounded-lg shrink-0">` : `<div class="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center shrink-0"><i class="fa-solid fa-box text-slate-400 text-xs"></i></div>`;
                 box.innerHTML += `
-                    <div class="flex justify-between items-center bg-slate-50 p-2 text-xs rounded-lg border">
-                        <span class="font-medium text-slate-700">${p.nombre} ($${p.precio})</span>
-                        <button onclick="eliminarProductoAdmin(${idx})" class="text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                `;
+                    <div class="flex justify-between items-center bg-slate-50 p-2.5 text-xs rounded-xl border border-slate-100 gap-2">
+                        ${thumb}
+                        <div class="flex-1 min-w-0">
+                            <p class="font-semibold text-slate-700 truncate">${p.nombre}</p>
+                            <p class="text-slate-400">$${parseFloat(p.precio).toLocaleString('es-AR')}</p>
+                        </div>
+                        <button onclick="eliminarProductoAdmin(${idx})" class="text-slate-300 hover:text-red-500 transition p-1">
+                            <i class="fa-solid fa-trash text-xs"></i>
+                        </button>
+                    </div>`;
             });
         }
-
+ 
         function guardarDatosTiendaAdmin() {
-            if(!tiendaActivaAdmin) return;
-            tiendaActivaAdmin.nombre = document.getElementById('admin-nombre').value;
+            if (!tiendaActivaAdmin) return;
+            tiendaActivaAdmin.nombre = document.getElementById('admin-nombre').value.trim();
             tiendaActivaAdmin.rubro = document.getElementById('admin-rubro').value;
             tiendaActivaAdmin.provincia = document.getElementById('admin-provincia').value;
             tiendaActivaAdmin.minimo = parseFloat(document.getElementById('admin-minimo').value) || 0;
-            tiendaActivaAdmin.descripcion = document.getElementById('admin-descripcion').value;
-
-            // Actualizar en el array maestro y persistir en disco duro
+            tiendaActivaAdmin.descripcion = document.getElementById('admin-descripcion').value.trim();
+            const wa = document.getElementById('admin-whatsapp');
+            if (wa) tiendaActivaAdmin.whatsapp = wa.value.trim();
+ 
             const idx = baseMayoristas.findIndex(t => t.id === tiendaActivaAdmin.id);
-            if(idx !== -1) baseMayoristas[idx] = tiendaActivaAdmin;
-            
+            if (idx !== -1) baseMayoristas[idx] = tiendaActivaAdmin;
             saveToStorage();
             mayoristasActuales = [...baseMayoristas];
             renderDirectory();
-            showToast("✓ Cambios impactados y guardados en memoria remota.");
+            showToast("✓ Cambios publicados exitosamente");
             changeView('home');
         }
-
+ 
         function checkPersistedSession() {
             const email = sessionStorage.getItem('SESION_MAYORISTA_EMAIL');
-            if(email) {
-                const tienda = baseMayoristas.find(t => t.email === email);
-                if(tienda) { tiendaActivaAdmin = tienda; openAdminPanel(tienda); changeView('home'); }
-            }
+            if (!email) return;
+            const tienda = baseMayoristas.find(t => t.email === email);
+            if (tienda) { tiendaActivaAdmin = tienda; openAdminPanel(tienda); changeView('home'); }
         }
-
+ 
         function logoutAdmin() {
             sessionStorage.clear();
             tiendaActivaAdmin = null;
-            location.reload();
+            document.getElementById('nav-auth-buttons').innerHTML = `
+                <button onclick="openAuthModal()" class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-semibold text-xs md:text-sm shadow transition flex items-center gap-2">
+                    <i class="fa-solid fa-shop hidden sm:inline"></i>
+                    <span>Sumar mi Tienda</span>
+                </button>`;
+            changeView('home');
+            showToast("Sesión cerrada correctamente");
         }
-
-        // VISTA PÚBLICA DE PERFILES
+ 
+        // ── Perfil público ────────────────────────────────────────────
         function verPerfilTienda(id) {
             const tienda = baseMayoristas.find(t => t.id === id);
-            const bannerEstilo = tienda.banner ? `<div class="h-44 w-full"><img src="${tienda.banner}" class="w-full h-full object-cover"></div>` : `<div class="h-28 w-full bg-gradient-to-r from-indigo-100 to-indigo-50"></div>`;
-            const logoEstilo = tienda.logo ? `<img src="${tienda.logo}" class="w-full h-full object-cover">` : `<i class="fa-solid fa-shop text-xl text-indigo-600"></i>`;
-
+            if (!tienda) return;
+ 
+            const bannerHtml = tienda.banner
+                ? `<div class="h-40 md:h-52 w-full"><img src="${tienda.banner}" class="w-full h-full object-cover"></div>`
+                : `<div class="h-28 w-full bg-gradient-to-br from-brand-100 to-violet-100"></div>`;
+ 
+            const logoHtml = tienda.logo
+                ? `<img src="${tienda.logo}" class="w-full h-full object-cover">`
+                : `<div class="w-full h-full flex items-center justify-center text-2xl font-black text-brand-400 font-outfit bg-brand-50">${(tienda.nombre || '?')[0].toUpperCase()}</div>`;
+ 
+            const waBtn = tienda.whatsapp
+                ? `<a href="https://wa.me/54${tienda.whatsapp.replace(/\D/g,'')}" target="_blank" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl text-xs font-bold shadow transition"><i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp</a>`
+                : '';
+ 
             document.getElementById('perfil-info-wrapper').innerHTML = `
-                ${bannerEstilo}
-                <div class="p-6 relative bg-white">
-                    <div class="absolute -top-8 left-6 w-16 h-16 rounded-2xl bg-white shadow border flex items-center justify-center overflow-hidden">${logoEstilo}</div>
-                    <div class="pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                ${bannerHtml}
+                <div class="p-5 md:p-6 relative bg-white">
+                    <div class="absolute -top-8 left-5 w-16 h-16 rounded-2xl bg-white shadow border-2 border-white overflow-hidden">${logoHtml}</div>
+                    <div class="pt-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                         <div>
-                            <h2 class="text-2xl font-extrabold text-slate-950">${tienda.nombre || 'Distribuidora Nueva'}</h2>
-                            <p class="text-indigo-600 text-xs font-semibold mt-0.5">${tienda.rubro} • <span class="text-slate-400">${tienda.provincia}</span></p>
+                            <h2 class="text-xl md:text-2xl font-extrabold text-slate-900">${tienda.nombre || 'Distribuidora'}</h2>
+                            <div class="flex flex-wrap gap-2 mt-1.5">
+                                <span class="badge bg-brand-50 text-brand-700">${tienda.rubro}</span>
+                                <span class="badge bg-slate-100 text-slate-500"><i class="fa-solid fa-location-dot text-[9px]"></i> ${tienda.provincia}</span>
+                            </div>
                         </div>
+                        ${waBtn}
                     </div>
-                    <p class="text-slate-600 mt-4 text-sm leading-relaxed">${tienda.descripcion || 'Sin descripción.'}</p>
-                    <div class="mt-4 inline-block bg-slate-50 border px-3 py-1.5 rounded-lg text-xs font-bold">Compra Mínima: <span class="text-indigo-600">$${tienda.minimo}</span></div>
-                </div>
-            `;
-
+                    <p class="text-slate-500 mt-4 text-sm leading-relaxed">${tienda.descripcion || 'Sin descripción.'}</p>
+                    <div class="mt-4 inline-flex items-center gap-2 bg-slate-50 border border-slate-200 px-3 py-2 rounded-xl text-xs font-bold text-slate-700">
+                        <i class="fa-solid fa-bag-shopping text-brand-500"></i>
+                        Compra mínima: <span class="text-brand-600">$${tienda.minimo.toLocaleString('es-AR')}</span>
+                    </div>
+                </div>`;
+ 
             const gridProd = document.getElementById('perfil-productos');
             gridProd.innerHTML = '';
-            tienda.productos.forEach(p => {
-                const imgBox = p.foto ? `<img src="${p.foto}" class="w-full h-full object-cover">` : `<i class="fa-solid fa-box text-2xl text-slate-300"></i>`;
-                gridProd.innerHTML += `
-                    <div class="bg-white p-4 rounded-2xl border flex flex-col justify-between">
-                        <div class="h-32 bg-slate-50 rounded-lg mb-2 border flex items-center justify-center overflow-hidden">${imgBox}</div>
-                        <h4 class="font-bold text-slate-900 text-xs">${p.nombre}</h4>
-                        <div class="mt-2 text-right"><span class="text-indigo-600 font-extrabold">$${p.precio}</span></div>
-                    </div>
-                `;
-            });
+ 
+            if (!tienda.productos.length) {
+                gridProd.innerHTML = `<div class="col-span-full empty-state"><div class="text-3xl mb-2">📦</div><p class="text-slate-500 font-medium">Catálogo en construcción</p><p class="text-slate-400 text-xs">Esta tienda aún no cargó productos.</p></div>`;
+            } else {
+                tienda.productos.forEach(p => {
+                    const imgHtml = p.foto ? `<img src="${p.foto}" class="w-full h-full object-cover">` : `<i class="fa-solid fa-box text-2xl text-slate-200"></i>`;
+                    gridProd.innerHTML += `
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex flex-col gap-2">
+                            <div class="h-28 bg-white rounded-lg border border-slate-100 flex items-center justify-center overflow-hidden">${imgHtml}</div>
+                            <p class="font-semibold text-slate-800 text-xs leading-tight">${p.nombre}</p>
+                            <p class="text-brand-600 font-extrabold text-sm">$${parseFloat(p.precio).toLocaleString('es-AR')}</p>
+                        </div>`;
+                });
+            }
             changeView('perfil');
         }
-
-        // FILTROS & NAVEGACIÓN GENERAL
-        function filterDirectory() {
-            const query = document.getElementById('search-input').value.toLowerCase();
-            const rubro = document.getElementById('filter-rubro').value;
-            const provincia = document.getElementById('filter-provincia').value;
-
-            mayoristasActuales = baseMayoristas.filter(tienda => {
-                const cQuery = (tienda.nombre || '').toLowerCase().includes(query) || (tienda.descripcion || '').toLowerCase().includes(query);
-                const cRubro = rubro === "" || tienda.rubro === rubro;
-                const cProv = provincia === "" || tienda.provincia === provincia;
-                return cQuery && cRubro && cProv;
-            });
-            renderDirectory();
+ 
+        // ── Navegación ────────────────────────────────────────────────
+        function changeView(v) {
+            document.getElementById('view-home').classList.toggle('hidden', v !== 'home');
+            document.getElementById('view-perfil').classList.toggle('hidden', v !== 'perfil');
+            document.getElementById('view-admin').classList.toggle('hidden', v !== 'admin');
+            document.getElementById('hero-banner').classList.toggle('hidden', v === 'admin' || v === 'perfil');
+            document.getElementById('como-funciona').classList.toggle('hidden', v === 'admin');
+            if (v === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (v === 'perfil') window.scrollTo({ top: 64, behavior: 'smooth' });
         }
-
-        function resetFilters() { document.getElementById('filter-rubro').value = ""; document.getElementById('filter-provincia').value = ""; document.getElementById('search-input').value = ""; mayoristasActuales = [...baseMayoristas]; renderDirectory(); }
-        function changeView(v) { document.getElementById('view-home').classList.toggle('hidden', v!=='home'); document.getElementById('view-perfil').classList.toggle('hidden', v!=='perfil'); document.getElementById('view-admin').classList.toggle('hidden', v!=='admin'); document.getElementById('hero-banner').classList.toggle('hidden', v==='admin'); }
-        function showToast(m) { const c = document.getElementById('toast-container'); const t = document.createElement('div'); t.className = "bg-slate-900 text-white text-xs px-4 py-2.5 rounded-xl shadow-md border border-slate-700"; t.textContent = m; c.appendChild(t); setTimeout(() => t.remove(), 3000); }
+ 
+        function focusSearch() {
+            changeView('home');
+            setTimeout(() => {
+                const el = document.getElementById('search-input') || document.getElementById('search-input-mobile');
+                if (el) { el.focus(); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+            }, 100);
+        }
+ 
+        function scrollToSection(id) {
+            changeView('home');
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+ 
+        // ── Mobile UI ─────────────────────────────────────────────────
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('open');
+        }
+ 
+        function closeMobileMenu() {
+            document.getElementById('mobile-menu').classList.remove('open');
+        }
+ 
+        function openMobileFilters() {
+            document.getElementById('modal-filtros-mobile').classList.remove('hidden');
+        }
+ 
+        function closeMobileFilters() {
+            document.getElementById('modal-filtros-mobile').classList.add('hidden');
+        }
+ 
+        // ── Modales genéricos ─────────────────────────────────────────
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+ 
+        // Cerrar modales al hacer click fuera
+        ['modal-auth','modal-privacidad','modal-terminos','modal-filtros-mobile'].forEach(id => {
+            document.getElementById(id)?.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    if (id === 'modal-auth') closeAuthModal();
+                    else if (id === 'modal-filtros-mobile') closeMobileFilters();
+                    else closeModal(id);
+                }
+            });
+        });
+ 
+        // ── Toast ─────────────────────────────────────────────────────
+        function showToast(msg, tipo = 'success') {
+            const c = document.getElementById('toast-container');
+            const t = document.createElement('div');
+            const bg = tipo === 'error' ? 'bg-red-600' : 'bg-slate-900';
+            t.className = `toast ${bg} text-white text-xs px-4 py-2.5 rounded-xl shadow-lg border border-white/10 pointer-events-auto`;
+            t.textContent = msg;
+            c.appendChild(t);
+            setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity 0.3s'; setTimeout(() => t.remove(), 300); }, 3000);
+        }
     </script>
 </body>
 </html>
