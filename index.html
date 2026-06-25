@@ -6,7 +6,6 @@
     <title>Al Mayoreo | Directorio Mayorista de Argentina</title>
     <meta name="description" content="Conectamos minoristas con distribuidores y fabricantes mayoristas de toda Argentina. Sin intermediarios ni comisiones ocultas. Encontrá tu proveedor ideal.">
  
-    <!-- Open Graph / WhatsApp / redes sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://matiasanchez88.github.io/">
     <meta property="og:title" content="Al Mayoreo | Directorio Mayorista de Argentina">
@@ -16,10 +15,8 @@
     <meta property="twitter:title" content="Al Mayoreo | Directorio Mayorista de Argentina">
     <meta property="twitter:description" content="Conectamos minoristas con mayoristas de Argentina. Directo, sin intermediarios.">
  
-    <!-- Favicon SVG inline -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234f46e5'/><text y='.9em' font-size='65' x='12'>📦</text></svg>">
+    <link class="hidden" rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234f46e5'/><text y='.9em' font-size='65' x='12'>📦</text></svg>">
  
-    <!-- Supabase JS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,14 +99,11 @@
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans">
  
-    <!-- TOAST -->
     <div id="toast-container" class="fixed top-5 right-5 z-[100] flex flex-col gap-2 pointer-events-none"></div>
  
-    <!-- NAVBAR -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex justify-between items-center">
  
-            <!-- Logo -->
             <div class="flex items-center gap-2.5 cursor-pointer" onclick="changeView('home')">
                 <div class="h-9 w-9 md:h-11 md:w-11 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow">
                     <i class="fa-solid fa-boxes-packing text-sm md:text-base"></i>
@@ -120,7 +114,6 @@
                 </div>
             </div>
  
-            <!-- Desktop nav -->
             <nav class="hidden md:flex items-center gap-6">
                 <button onclick="changeView('home')" class="text-slate-500 hover:text-brand-600 font-medium text-sm transition flex items-center gap-1.5">
                     <i class="fa-solid fa-magnifying-glass text-xs"></i> Explorar
@@ -129,7 +122,6 @@
                 <button onclick="scrollToSection('contacto')" class="text-slate-500 hover:text-brand-600 font-medium text-sm transition">Contacto</button>
             </nav>
  
-            <!-- CTA -->
             <div class="flex items-center gap-2">
                 <div id="nav-auth-buttons">
                     <button onclick="openAuthModal()" class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-semibold text-xs md:text-sm shadow transition flex items-center gap-2">
@@ -137,14 +129,12 @@
                         <span>Sumar mi Tienda</span>
                     </button>
                 </div>
-                <!-- Mobile menu toggle -->
                 <button onclick="toggleMobileMenu()" class="md:hidden ml-1 p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition">
                     <i class="fa-solid fa-bars text-base"></i>
                 </button>
             </div>
         </div>
  
-        <!-- Mobile menu -->
         <div id="mobile-menu" class="md:hidden border-t border-slate-100 bg-white px-4">
             <div class="py-3 flex flex-col gap-1">
                 <button onclick="changeView('home'); closeMobileMenu()" class="text-left py-2.5 px-3 text-sm text-slate-700 rounded-lg hover:bg-slate-50 font-medium transition">
@@ -160,7 +150,6 @@
         </div>
     </header>
  
-    <!-- ===== HERO ===== -->
     <section id="hero-banner" class="relative overflow-hidden bg-white border-b border-slate-200">
         <div class="hero-grid absolute inset-0 opacity-40"></div>
         <div class="absolute inset-0 bg-gradient-to-br from-brand-50 via-white to-violet-50/60"></div>
@@ -189,7 +178,6 @@
                     </button>
                 </div>
  
-                <!-- Stats -->
                 <div class="flex flex-wrap gap-4 mt-10">
                     <div class="stat-chip">
                         <div class="text-lg font-extrabold font-outfit text-brand-700" id="stat-tiendas">1</div>
@@ -208,13 +196,10 @@
         </div>
     </section>
  
-    <!-- ===== MAIN CONTENT ===== -->
     <main class="flex-grow w-full">
  
-        <!-- VISTA: HOME -->
         <section id="view-home" class="view-section">
  
-            <!-- Barra de búsqueda rápida mobile -->
             <div class="bg-white border-b border-slate-200 px-4 py-3 md:hidden">
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
@@ -228,7 +213,6 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
                 <div class="flex gap-8 items-start">
  
-                    <!-- SIDEBAR FILTROS DESKTOP -->
                     <aside class="hidden lg:block w-64 shrink-0">
                         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-5 sticky top-24">
                             <div class="flex justify-between items-center pb-3 border-b border-slate-100">
@@ -293,9 +277,7 @@
                         </div>
                     </aside>
  
-                    <!-- GRILLA TIENDAS -->
                     <div class="flex-1 min-w-0">
-                        <!-- Header resultado -->
                         <div class="flex items-center justify-between mb-4">
                             <p class="text-sm text-slate-500" id="result-count"></p>
                             <div id="loading-indicator" class="hidden text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-circle-notch spin"></i> Cargando…</div>
@@ -306,7 +288,6 @@
             </div>
         </section>
  
-        <!-- VISTA: PERFIL -->
         <section id="view-perfil" class="view-section hidden">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
                 <button onclick="changeView('home')" class="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-brand-600 transition">
@@ -320,7 +301,6 @@
             </div>
         </section>
  
-        <!-- VISTA: ADMIN -->
         <section id="view-admin" class="view-section hidden">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-8 border-b pb-5">
@@ -334,7 +314,6 @@
                 </div>
  
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- FORMULARIO -->
                     <div class="md:col-span-2 bg-white p-5 md:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
                         <h3 class="font-bold text-base text-slate-800 border-b pb-3 flex items-center gap-2">
                             <i class="fa-solid fa-pen-to-square text-brand-600 text-sm"></i> Datos de tu Distribuidora
@@ -394,6 +373,25 @@
                                 <input type="number" id="admin-minimo" placeholder="Ej: 50000" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
                             </div>
                         </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t pt-3">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1.5">Nombre de Contacto / Vendedor</label>
+                                <input type="text" id="admin-nombre-contacto" placeholder="Ej: Juan Pérez" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1.5">Dirección / Showroom</label>
+                                <input type="text" id="admin-direccion" placeholder="Ej: Av. Avellaneda 2500, Flores" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1.5">Email Comercial</label>
+                                <input type="email" id="admin-email-contacto" placeholder="ventas@tuempresa.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-500 mb-1.5">Instagram (Usuario sin @)</label>
+                                <input type="text" id="admin-instagram" placeholder="tutienda.mayorista" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
+                            </div>
+                        </div>
  
                         <div>
                             <label class="block text-[11px] font-bold text-slate-500 mb-1.5">Descripción del Negocio</label>
@@ -426,7 +424,6 @@
                         </button>
                     </div>
  
-                    <!-- CATÁLOGO -->
                     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                         <h3 class="font-bold text-base text-slate-800 border-b pb-3 flex items-center gap-2">
                             <i class="fa-solid fa-box text-brand-600 text-sm"></i> Tu Catálogo
@@ -447,7 +444,6 @@
         </section>
     </main>
  
-    <!-- ===== SECCIÓN: CÓMO FUNCIONA ===== -->
     <section id="como-funciona" class="bg-white border-t border-slate-200 py-16 md:py-20">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -476,7 +472,6 @@
                 </div>
             </div>
  
-            <!-- Para mayoristas -->
             <div class="mt-14 bg-gradient-to-br from-brand-600 to-violet-700 rounded-2xl p-6 md:p-8 text-white flex flex-col md:flex-row gap-6 items-center justify-between">
                 <div>
                     <div class="text-xs font-bold uppercase tracking-wider text-brand-200 mb-2">¿Sos mayorista o distribuidor?</div>
@@ -490,11 +485,9 @@
         </div>
     </section>
  
-    <!-- ===== FOOTER / CONTACTO ===== -->
     <footer id="contacto" class="bg-slate-900 text-slate-400 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
-                <!-- Marca -->
                 <div>
                     <div class="flex items-center gap-2.5 mb-4">
                         <div class="h-9 w-9 bg-brand-600 rounded-xl flex items-center justify-center text-white">
@@ -504,8 +497,6 @@
                     </div>
                     <p class="text-sm leading-relaxed text-slate-500">Directorio mayorista argentino. Conectamos minoristas con distribuidores directos de todo el país.</p>
                 </div>
- 
-                <!-- Links -->
                 <div>
                     <h4 class="text-white font-semibold text-sm mb-4">Plataforma</h4>
                     <ul class="space-y-2 text-sm">
@@ -514,8 +505,6 @@
                         <li><button onclick="scrollToSection('como-funciona')" class="hover:text-white transition">Cómo funciona</button></li>
                     </ul>
                 </div>
- 
-                <!-- Contacto y legal -->
                 <div>
                     <h4 class="text-white font-semibold text-sm mb-4">Contacto y legal</h4>
                     <ul class="space-y-2 text-sm">
@@ -525,7 +514,6 @@
                     </ul>
                 </div>
             </div>
- 
             <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-600">
                 <span>© 2025 Al Mayoreo. Hecho en Argentina 🇦🇷</span>
                 <span>Los datos de los comercios son provistos por sus propietarios.</span>
@@ -533,669 +521,719 @@
         </div>
     </footer>
  
-    <!-- ===== MODAL AUTH ===== -->
     <div id="modal-auth" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-2xl w-full max-w-sm shadow-2xl border border-slate-200 overflow-hidden">
- 
-            <!-- Tabs -->
             <div class="flex border-b border-slate-100">
                 <button id="tab-reg" onclick="switchAuthTab('registro')" class="flex-1 py-3.5 text-sm font-semibold border-b-2 transition text-brand-600 border-brand-600">Crear cuenta</button>
                 <button id="tab-log" onclick="switchAuthTab('login')" class="flex-1 py-3.5 text-sm font-semibold border-b-2 transition text-slate-400 border-transparent">Iniciar sesión</button>
             </div>
- 
-            <!-- Fase: Registro -->
             <div id="auth-fase-registro" class="p-6 space-y-4">
                 <div class="text-center">
                     <div class="w-11 h-11 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-3"><i class="fa-solid fa-shop text-brand-600 text-lg"></i></div>
                     <p class="text-xs text-slate-400">Registrate para gestionar tu tienda mayorista</p>
                 </div>
                 <div class="space-y-3">
-                    <div><label class="block text-[11px] font-bold text-slate-500 mb-1.5">Correo electrónico</label><input type="email" id="auth-email" placeholder="tu@comercio.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm"></div>
-                    <div><label class="block text-[11px] font-bold text-slate-500 mb-1.5">Contraseña (mín. 6 caracteres)</label><input type="password" id="auth-password" placeholder="••••••••" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm"></div>
+                    <div><label class="block text-[11px] font-bold text-slate-500 mb-1.5">Correo electrónico</label><input type="email" id="auth-email" placeholder="tu@comercio.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-sm"></div>
+                    <div><label class="block text-[11px] font-bold text-slate-500 mb-1.5">Contraseña (mín. 6 caracteres)</label><input type="password" id="auth-password" placeholder="••••••••" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2 px-3 text-sm"></div>
                 </div>
-                <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex gap-2.5 items-start">
-                    <i class="fa-solid fa-lock text-amber-500 text-xs mt-0.5 shrink-0"></i>
-                    <p class="text-xs text-amber-800 leading-relaxed">Tus datos se usan solo para gestionar tu tienda. <button onclick="openModal('modal-privacidad');closeAuthModal()" class="underline font-semibold">Ver privacidad.</button></p>
-                </div>
-                <div class="space-y-2">
-                    <button id="btn-registro" onclick="procesarRegistro()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl text-sm shadow transition">Crear cuenta</button>
-                    <button onclick="closeAuthModal()" class="w-full text-xs text-slate-400 hover:text-slate-600 transition py-1.5">Cancelar</button>
-                </div>
-            </div>
- 
-            <!-- Fase: Login -->
-            <div id="auth-fase-verificacion" class="p-6 space-y-4 hidden">
-                <div class="text-center">
-                    <div class="w-11 h-11 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-3"><i class="fa-solid fa-right-to-bracket text-brand-600 text-lg"></i></div>
-                    <p class="text-xs text-slate-400">Ingresá con tu cuenta para acceder a tu panel</p>
-                </div>
-                <div class="space-y-3">
-                    <div><label class="block text-[11px] font-bold text-slate-500 mb-1.5">Correo electrónico</label><input type="email" id="login-email" placeholder="tu@comercio.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm"></div>
-                    <div><label class="block text-[11px] font-bold text-slate-500 mb-1.5">Contraseña</label><input type="password" id="login-password" placeholder="••••••••" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm"></div>
-                </div>
-                <div class="space-y-2">
-                    <button id="btn-login" onclick="procesarLogin()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl text-sm shadow transition">Entrar al panel</button>
-                    <button onclick="closeAuthModal()" class="w-full text-xs text-slate-400 hover:text-slate-600 transition py-1.5">Cancelar</button>
-                </div>
-            </div>
- 
-            <!-- Fase: Email enviado (post-registro Supabase) -->
-            <div id="auth-fase-email-sent" class="p-6 space-y-4 hidden">
-                <div class="text-center">
-                    <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-3"><i class="fa-solid fa-envelope-circle-check text-green-500 text-xl"></i></div>
-                    <h3 class="font-outfit font-extrabold text-lg text-slate-900">Revisá tu correo</h3>
-                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">Te enviamos un link de confirmación. Hacé clic en él y después volvé acá para iniciar sesión.</p>
-                </div>
-                <button onclick="switchAuthTab('login')" class="w-full bg-brand-600 text-white font-bold py-3 rounded-xl text-sm shadow">Ir a iniciar sesión</button>
-                <button onclick="closeAuthModal()" class="w-full text-xs text-slate-400 hover:text-slate-600 transition py-1.5">Cerrar</button>
+                <button id="btn-auth-submit" onclick="handleSubmitAuth()" class="w-full bg-brand-600 text-white font-bold py-2.5 rounded-xl text-sm shadow hover:bg-brand-700 transition">Crear mi cuenta</button>
             </div>
         </div>
     </div>
- 
-    <!-- ===== MODAL FILTROS MOBILE ===== -->
-    <div id="modal-filtros-mobile" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-end">
-        <div class="bg-white w-full rounded-t-2xl p-5 space-y-5 max-h-[80vh] overflow-y-auto">
-            <div class="flex justify-between items-center">
-                <h3 class="font-bold text-slate-900">Filtros</h3>
-                <button onclick="closeMobileFilters()" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-500"><i class="fa-solid fa-x text-xs"></i></button>
-            </div>
-            <div>
-                <label class="block text-[11px] font-bold text-slate-500 mb-2">Rubro</label>
-                <select id="filter-rubro-mobile" onchange="syncFilters(this, 'rubro')" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
-                    <option value="">Todos los rubros</option>
-                    <option value="Bazar">Bazar & Decoración</option>
-                    <option value="Indumentaria">Indumentaria & Ropa</option>
-                    <option value="Calzado">Calzado</option>
-                    <option value="Perfumería">Perfumería & Cosmética</option>
-                    <option value="Electrónica">Electrónica & Tecnología</option>
-                    <option value="Alimentos">Alimentos & Bebidas</option>
-                    <option value="Ferretería">Ferretería & Construcción</option>
-                    <option value="Juguetería">Juguetería & Cotillón</option>
-                    <option value="Librería">Librería & Papelería</option>
-                    <option value="Otros">Otros</option>
-                </select>
-            </div>
-            <div>
-                <label class="block text-[11px] font-bold text-slate-500 mb-2">Provincia</label>
-                <select id="filter-provincia-mobile" onchange="syncFilters(this, 'provincia')" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
-                    <option value="">Toda la Argentina</option>
-                    <option value="CABA">CABA</option>
-                    <option value="Buenos Aires">Buenos Aires</option>
-                    <option value="Córdoba">Córdoba</option>
-                    <option value="Santa Fe">Santa Fe</option>
-                    <option value="Mendoza">Mendoza</option>
-                    <option value="Tucumán">Tucumán</option>
-                    <option value="Salta">Salta</option>
-                    <option value="Misiones">Misiones</option>
-                    <option value="Neuquén">Neuquén</option>
-                    <option value="Entre Ríos">Entre Ríos</option>
-                </select>
-            </div>
-            <button onclick="closeMobileFilters()" class="w-full bg-brand-600 text-white font-bold py-3 rounded-xl text-sm">Aplicar filtros</button>
-            <button onclick="resetFilters(); closeMobileFilters()" class="w-full text-xs text-slate-400 py-1">Limpiar todo</button>
+
+    <div id="modal-privacidad" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl w-full max-w-lg p-6 max-h-[80vh] overflow-y-auto">
+            <h3 class="font-outfit font-bold text-xl text-slate-900 mb-4">Política de Privacidad</h3>
+            <p class="text-sm text-slate-500 mb-4">En Al Mayoreo respetamos tus datos. No comercializamos información de contacto de las tiendas registradas con terceros.</p>
+            <button onclick="closeModal('modal-privacidad')" class="bg-slate-900 text-white text-xs px-4 py-2 rounded-xl font-bold">Cerrar</button>
         </div>
     </div>
- 
-    <!-- ===== MODAL PRIVACIDAD ===== -->
-    <div id="modal-privacidad" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden">
-            <div class="flex justify-between items-center px-6 py-4 border-b">
-                <h3 class="font-outfit font-bold text-lg text-slate-900">Política de Privacidad</h3>
-                <button onclick="closeModal('modal-privacidad')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 transition"><i class="fa-solid fa-x text-xs"></i></button>
-            </div>
-            <div class="p-6 text-sm text-slate-600 space-y-4 max-h-[60vh] overflow-y-auto leading-relaxed">
-                <p><strong class="text-slate-800">1. Datos que recolectamos.</strong> Al registrarte, recolectamos tu dirección de correo electrónico y contraseña. Los datos públicos de tu tienda (nombre, rubro, provincia, catálogo) son visibles para todos los visitantes.</p>
-                <p><strong class="text-slate-800">2. Uso de los datos.</strong> Los datos personales se utilizan exclusivamente para autenticarte y asociarlos a tu tienda. No los vendemos, cedemos ni compartimos con terceros con fines comerciales.</p>
-                <p><strong class="text-slate-800">3. Almacenamiento.</strong> Actualmente los datos se almacenan en el dispositivo del usuario mediante <code class="bg-slate-100 px-1 rounded">localStorage</code>. En la versión con backend, se almacenarán en servidores seguros con encriptación en tránsito (HTTPS) y en reposo.</p>
-                <p><strong class="text-slate-800">4. Ley 25.326.</strong> En cumplimiento de la Ley Nacional de Protección de Datos Personales (Nº 25.326), podés solicitar en cualquier momento el acceso, rectificación o eliminación de tus datos escribiendo a <a href="mailto:contacto@almayoreo.com.ar" class="text-brand-600 underline">contacto@almayoreo.com.ar</a>.</p>
-                <p><strong class="text-slate-800">5. Cookies.</strong> Usamos <code class="bg-slate-100 px-1 rounded">sessionStorage</code> para mantener tu sesión activa mientras usás el sitio. No utilizamos cookies de rastreo ni publicidad.</p>
-                <p class="text-slate-400 text-xs">Última actualización: junio 2025</p>
-            </div>
+
+    <div id="modal-terminos" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl w-full max-w-lg p-6 max-h-[80vh] overflow-y-auto">
+            <h3 class="font-outfit font-bold text-xl text-slate-900 mb-4">Términos y Condiciones</h3>
+            <p class="text-sm text-slate-500 mb-4">Al Mayoreo funciona exclusivamente como puente informativo. No nos responsabilizamos por las transacciones ni acuerdos comerciales efectuados entre los usuarios.</p>
+            <button onclick="closeModal('modal-terminos')" class="bg-slate-900 text-white text-xs px-4 py-2 rounded-xl font-bold">Cerrar</button>
         </div>
     </div>
- 
-    <!-- ===== MODAL TÉRMINOS ===== -->
-    <div id="modal-terminos" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden">
-            <div class="flex justify-between items-center px-6 py-4 border-b">
-                <h3 class="font-outfit font-bold text-lg text-slate-900">Términos y Condiciones</h3>
-                <button onclick="closeModal('modal-terminos')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 transition"><i class="fa-solid fa-x text-xs"></i></button>
+
+    <div id="modal-filtros-mobile" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex justify-end hidden">
+        <div id="filter-sidebar" class="bg-white w-80 h-full p-5 space-y-5 flex flex-col justify-between">
+            <div class="space-y-5">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <h3 class="font-outfit font-bold text-base text-slate-900 flex items-center gap-2"><i class="fa-solid fa-sliders text-brand-600"></i> Filtros</h3>
+                    <button onclick="closeMobileFilters()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">Rubro</label>
+                    <select id="filter-rubro-mobile" onchange="syncSelectFilters('rubro')" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
+                        <option value="">Todos los rubros</option>
+                        <option value="Bazar">Bazar & Decoración</option>
+                        <option value="Indumentaria">Indumentaria & Ropa</option>
+                        <option value="Calzado">Calzado</option>
+                        <option value="Perfumería">Perfumería & Cosmética</option>
+                        <option value="Electrónica">Electrónica & Tecnología</option>
+                        <option value="Alimentos">Alimentos & Bebidas</option>
+                        <option value="Ferretería">Ferretería & Construcción</option>
+                        <option value="Juguetería">Juguetería & Cotillón</option>
+                        <option value="Librería">Librería & Papelería</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">Provincia</label>
+                    <select id="filter-provincia-mobile" onchange="syncSelectFilters('provincia')" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3 text-sm">
+                        <option value="">Toda la Argentina</option>
+                        <option value="CABA">CABA</option>
+                        <option value="Buenos Aires">Buenos Aires</option>
+                        <option value="Córdoba">Córdoba</option>
+                        <option value="Santa Fe">Santa Fe</option>
+                        <option value="Mendoza">Mendoza</option>
+                        <option value="Tucumán">Tucumán</option>
+                        <option value="Salta">Salta</option>
+                        <option value="Misiones">Misiones</option>
+                        <option value="Neuquén">Neuquén</option>
+                        <option value="Entre Ríos">Entre Ríos</option>
+                        <option value="Chaco">Chaco</option>
+                        <option value="Corrientes">Corrientes</option>
+                        <option value="Santiago del Estero">Santiago del Estero</option>
+                        <option value="San Juan">San Juan</option>
+                        <option value="Jujuy">Jujuy</option>
+                        <option value="Río Negro">Río Negro</option>
+                        <option value="Formosa">Formosa</option>
+                        <option value="Chubut">Chubut</option>
+                        <option value="San Luis">San Luis</option>
+                        <option value="Catamarca">Catamarca</option>
+                        <option value="La Rioja">La Rioja</option>
+                        <option value="La Pampa">La Pampa</option>
+                        <option value="Santa Cruz">Santa Cruz</option>
+                        <option value="Tierra del Fuego">Tierra del Fuego</option>
+                    </select>
+                </div>
             </div>
-            <div class="p-6 text-sm text-slate-600 space-y-4 max-h-[60vh] overflow-y-auto leading-relaxed">
-                <p><strong class="text-slate-800">1. Objeto.</strong> Al Mayoreo es un directorio digital gratuito que facilita el contacto entre comercios minoristas y distribuidores/fabricantes mayoristas de Argentina.</p>
-                <p><strong class="text-slate-800">2. Registro de tiendas.</strong> Al registrar una tienda, el titular declara que posee autorización legal para representar al comercio y que la información publicada es veraz, actual y no infringe derechos de terceros.</p>
-                <p><strong class="text-slate-800">3. Gratuidad.</strong> El uso de la plataforma es gratuito para todas las partes. Al Mayoreo no cobra comisiones, suscripciones ni honorarios de ningún tipo.</p>
-                <p><strong class="text-slate-800">4. Responsabilidad.</strong> Al Mayoreo actúa como directorio intermediario. Las transacciones comerciales, precios, condiciones de entrega y cualquier acuerdo entre partes son de exclusiva responsabilidad de los comercios involucrados.</p>
-                <p><strong class="text-slate-800">5. Contenido.</strong> Queda prohibido publicar contenido falso, engañoso, ilegal o que viole derechos de terceros. Al Mayoreo se reserva el derecho de eliminar registros que incumplan estas condiciones.</p>
-                <p><strong class="text-slate-800">6. Jurisdicción.</strong> Cualquier controversia se someterá a la jurisdicción de los Tribunales Ordinarios de la Ciudad de Buenos Aires, Argentina.</p>
-                <p class="text-slate-400 text-xs">Última actualización: junio 2025</p>
+            <div class="flex gap-3 pt-4 border-t">
+                <button onclick="resetFilters(); closeMobileFilters()" class="flex-1 py-2.5 border border-slate-200 rounded-xl text-xs font-bold text-slate-500">Limpiar</button>
+                <button onclick="closeMobileFilters()" class="flex-1 py-2.5 bg-brand-600 text-white rounded-xl text-xs font-bold shadow">Aplicar</button>
             </div>
         </div>
     </div>
- 
-    <!-- ========== SCRIPTS ========== -->
+
     <script>
-// ══════════════════════════════════════════════════════
-//  CONFIGURACIÓN SUPABASE
-//  1. Creá un proyecto en https://supabase.com (gratis)
-//  2. Settings → API → copiá Project URL y anon key
-//  3. Pegá los valores abajo y reemplazá el index.html
-// ══════════════════════════════════════════════════════
-const SUPABASE_URL = 'https://iotqgmtcaumjgpksvmhn.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_emvydP_eTN26uj5M4dzCGA_2FKgoTyx';
- 
-const SUPABASE_OK = SUPABASE_URL !== 'TU_SUPABASE_URL';
-let sb = null;
-if (SUPABASE_OK) sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
- 
-// ── Estado ─────────────────────────────────────────────
-let baseMayoristas = [];
-let mayoristasActuales = [];
-let tiendaActivaAdmin = null;
-let tempProductImage = null;
- 
-// ── Init ───────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', async () => {
-    if (SUPABASE_OK) {
-        sb.auth.onAuthStateChange(async (_event, session) => {
-            if (session?.user) {
-                const t = await fetchTiendaByEmail(session.user.email);
-                if (t) { tiendaActivaAdmin = t; updateNavLoggedIn(); }
-            }
+        // RECUPERACIÓN E INICIALIZACIÓN DE SUPABASE
+        const SUPABASE_URL = 'https://zrjqshfqqvuxybywunzp.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_emvydP_eTN26uj5M4dzCGA_2FKgoTyx';
+         
+        const SUPABASE_OK = SUPABASE_URL !== 'TU_SUPABASE_URL';
+        let sb = null;
+        if (SUPABASE_OK) sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // Variables de estado local de la app
+        let tiendasGlobal = [];
+        let authModo = 'registro'; // 'registro' o 'login'
+        let usuarioLogueado = null;
+        let tiendaAdminLocal = null;
+        let productosAdminLocal = [];
+
+        // Archivos en base64 temporales en admin
+        let base64LogoTmp = null;
+        let base64BannerTmp = null;
+
+        // Al iniciar la ventana
+        window.addEventListener('DOMContentLoaded', async () => {
+            await cargarDirectorioCompleto();
+            verificarSesionExistente();
         });
-        await cargarTiendas();
-    } else {
-        baseMayoristas = JSON.parse(localStorage.getItem('AL_MAYOREO_TIENDAS') || '[]');
-        mayoristasActuales = [...baseMayoristas];
-        renderDirectory();
-        checkSesionLocal();
-    }
-    updateStatCount();
-});
- 
-// ── Supabase: carga ────────────────────────────────────
-async function cargarTiendas() {
-    setLoading(true);
-    const { data, error } = await sb.from('tiendas').select('*, productos(*)').order('created_at', { ascending: false });
-    setLoading(false);
-    if (error) { showToast('Error al cargar datos', 'error'); return; }
-    baseMayoristas = data || [];
-    mayoristasActuales = [...baseMayoristas];
-    renderDirectory();
-    updateStatCount();
-}
- 
-async function fetchTiendaByEmail(email) {
-    const { data } = await sb.from('tiendas').select('*, productos(*)').eq('email', email).single();
-    return data;
-}
- 
-function setLoading(on) {
-    const el = document.getElementById('loading-indicator');
-    if (el) el.classList.toggle('hidden', !on);
-}
- 
-// ── Auth ───────────────────────────────────────────────
-function openAuthModal() {
-    document.getElementById('modal-auth').classList.remove('hidden');
-    document.getElementById('auth-fase-registro').classList.remove('hidden');
-    document.getElementById('auth-fase-verificacion').classList.add('hidden');
-    document.getElementById('auth-fase-email-sent').classList.add('hidden');
-}
- 
-function closeAuthModal() {
-    document.getElementById('modal-auth').classList.add('hidden');
-}
- 
-function switchAuthTab(tab) {
-    const reg = tab === 'registro';
-    document.getElementById('auth-fase-registro').classList.toggle('hidden', !reg);
-    document.getElementById('auth-fase-verificacion').classList.toggle('hidden', reg);
-    document.getElementById('auth-fase-email-sent').classList.add('hidden');
-    document.getElementById('tab-reg').className = 'flex-1 py-3.5 text-sm font-semibold border-b-2 transition ' + (reg ? 'text-brand-600 border-brand-600' : 'text-slate-400 border-transparent');
-    document.getElementById('tab-log').className = 'flex-1 py-3.5 text-sm font-semibold border-b-2 transition ' + (!reg ? 'text-brand-600 border-brand-600' : 'text-slate-400 border-transparent');
-}
- 
-async function procesarRegistro() {
-    const email = document.getElementById('auth-email').value.trim();
-    const pass  = document.getElementById('auth-password').value;
-    if (!email || !pass) { showToast('Completá todos los campos', 'error'); return; }
-    if (pass.length < 6)  { showToast('La contraseña debe tener al menos 6 caracteres', 'error'); return; }
- 
-    setBtnLoading('btn-registro', true, 'Creando cuenta...');
- 
-    if (SUPABASE_OK) {
-        const { error } = await sb.auth.signUp({ email, password: pass });
-        setBtnLoading('btn-registro', false, 'Crear cuenta');
-        if (error) { showToast(error.message, 'error'); return; }
-        // Crear fila en tiendas si no existe
-        await sb.from('tiendas').upsert({ email, nombre: '', rubro: 'Otros', provincia: 'CABA', minimo: 0, whatsapp: '', descripcion: '' }, { onConflict: 'email', ignoreDuplicates: true });
-        // Mostrar pantalla "revisá tu email"
-        document.getElementById('auth-fase-registro').classList.add('hidden');
-        document.getElementById('auth-fase-email-sent').classList.remove('hidden');
-    } else {
-        // Modo LOCAL
-        setBtnLoading('btn-registro', false, 'Crear cuenta');
-        let t = baseMayoristas.find(x => x.email === email);
-        if (!t) {
-            t = { id: Date.now(), email, nombre: '', rubro: 'Otros', provincia: 'CABA', minimo: 0, whatsapp: '', logo: null, banner: null, descripcion: '', productos: [] };
-            baseMayoristas.push(t);
-            saveLocal();
-            updateStatCount();
+
+        // ── LÓGICA DE NAVEGACIÓN Y VISTAS ───────────────────────────────
+        function changeView(vista) {
+            ['view-home', 'view-perfil', 'view-admin'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById('view-' + vista).classList.remove('hidden');
+            
+            // Mostrar u ocultar banner principal segun vista
+            if (vista === 'home') {
+                document.getElementById('hero-banner').classList.remove('hidden');
+            } else {
+                document.getElementById('hero-banner').classList.add('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        tiendaActivaAdmin = t;
-        sessionStorage.setItem('AM_EMAIL', email);
-        closeAuthModal();
-        openAdminPanel(t);
-        showToast('Cuenta creada. Completá los datos de tu tienda.');
-    }
-}
- 
-async function procesarLogin() {
-    const email = document.getElementById('login-email').value.trim();
-    const pass  = document.getElementById('login-password').value;
-    if (!email || !pass) { showToast('Completá todos los campos', 'error'); return; }
- 
-    setBtnLoading('btn-login', true, 'Ingresando...');
- 
-    if (SUPABASE_OK) {
-        const { error } = await sb.auth.signInWithPassword({ email, password: pass });
-        setBtnLoading('btn-login', false, 'Entrar al panel');
-        if (error) { showToast('Email o contraseña incorrectos', 'error'); return; }
-        const t = await fetchTiendaByEmail(email);
-        if (!t) { showToast('No encontramos tu tienda, contactá soporte', 'error'); return; }
-        tiendaActivaAdmin = t;
-        closeAuthModal();
-        openAdminPanel(t);
-        showToast('Sesión iniciada');
-    } else {
-        // Modo LOCAL
-        setBtnLoading('btn-login', false, 'Entrar al panel');
-        let t = baseMayoristas.find(x => x.email === email);
-        if (!t) {
-            t = { id: Date.now(), email, nombre: '', rubro: 'Otros', provincia: 'CABA', minimo: 0, whatsapp: '', logo: null, banner: null, descripcion: '', productos: [] };
-            baseMayoristas.push(t);
-            saveLocal();
+
+        function scrollToSection(id) {
+            changeView('home');
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 180);
         }
-        tiendaActivaAdmin = t;
-        sessionStorage.setItem('AM_EMAIL', email);
-        closeAuthModal();
-        openAdminPanel(t);
-        showToast('Sesión iniciada');
-    }
-}
- 
-function checkSesionLocal() {
-    const email = sessionStorage.getItem('AM_EMAIL');
-    if (!email) return;
-    const t = baseMayoristas.find(x => x.email === email);
-    if (t) { tiendaActivaAdmin = t; updateNavLoggedIn(); }
-}
- 
-function updateNavLoggedIn() {
-    document.getElementById('nav-auth-buttons').innerHTML = `
-        <button onclick="changeView('admin')" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-xl font-semibold text-xs shadow transition flex items-center gap-1.5">
-            <i class="fa-solid fa-gauge text-xs"></i> Mi Panel
-        </button>`;
-}
- 
-async function logoutAdmin() {
-    if (SUPABASE_OK) await sb.auth.signOut();
-    sessionStorage.clear();
-    tiendaActivaAdmin = null;
-    document.getElementById('nav-auth-buttons').innerHTML = `
-        <button onclick="openAuthModal()" class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-semibold text-xs md:text-sm shadow transition flex items-center gap-2">
-            <i class="fa-solid fa-shop hidden sm:inline"></i><span>Sumar mi Tienda</span>
-        </button>`;
-    changeView('home');
-    showToast('Sesión cerrada');
-}
- 
-// ── Render directorio ──────────────────────────────────
-function renderDirectory() {
-    const grid = document.getElementById('grid-mayoristas');
-    const countEl = document.getElementById('result-count');
-    grid.innerHTML = '';
- 
-    if (!mayoristasActuales.length) {
-        grid.innerHTML = `<div class="empty-state col-span-full">
-            <div class="text-4xl mb-2">🔍</div>
-            <p class="font-semibold text-slate-600 text-base">Sin resultados</p>
-            <p class="text-slate-400 text-sm max-w-xs">Probá cambiando los filtros o buscando otro término.</p>
-            <button onclick="resetFilters()" class="mt-3 text-xs font-semibold text-brand-600 hover:underline">Limpiar filtros</button>
-        </div>`;
-        if (countEl) countEl.textContent = '0 tiendas encontradas';
-        return;
-    }
- 
-    if (countEl) countEl.textContent = mayoristasActuales.length + ' tienda' + (mayoristasActuales.length !== 1 ? 's' : '') + ' encontrada' + (mayoristasActuales.length !== 1 ? 's' : '');
- 
-    mayoristasActuales.forEach(tienda => {
-        const logoSrc = tienda.logo_url || tienda.logo;
-        const logoHtml = logoSrc
-            ? '<img src="' + logoSrc + '" class="w-full h-full object-cover">'
-            : '<div class="w-full h-full flex items-center justify-center text-xl bg-brand-50 text-brand-400 font-black font-outfit">' + (tienda.nombre || '?')[0].toUpperCase() + '</div>';
- 
-        const card = document.createElement('div');
-        card.className = 'bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between card-hover cursor-pointer';
-        card.onclick = () => verPerfilTienda(tienda.id);
-        card.innerHTML = `
-            <div>
-                <div class="flex items-start gap-3 mb-3">
-                    <div class="w-11 h-11 rounded-xl overflow-hidden border border-slate-100 shrink-0">${logoHtml}</div>
-                    <div class="min-w-0">
-                        <h3 class="font-bold text-slate-900 text-sm leading-tight truncate">${tienda.nombre || 'Tienda nueva'}</h3>
-                        <div class="flex flex-wrap gap-1 mt-1.5">
-                            <span class="badge bg-brand-50 text-brand-700">${tienda.rubro || 'Sin rubro'}</span>
-                            <span class="badge bg-slate-100 text-slate-500"><i class="fa-solid fa-location-dot text-[9px]"></i> ${tienda.provincia || 'Argentina'}</span>
+
+        function focusSearch() {
+            changeView('home');
+            setTimeout(() => {
+                const inp = window.innerWidth < 768 ? document.getElementById('search-input-mobile') : document.getElementById('search-input');
+                if (inp) inp.focus();
+            }, 150);
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('open');
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobile-menu').classList.remove('open');
+        }
+        function openMobileFilters() {
+            document.getElementById('modal-filtros-mobile').classList.remove('hidden');
+        }
+        function closeMobileFilters() {
+            document.getElementById('modal-filtros-mobile').classList.add('hidden');
+        }
+
+        // Sincronizar inputs entre desktop y mobile
+        function syncSearch(src) {
+            document.getElementById('search-input').value = src.value;
+            filterDirectory();
+        }
+        function syncSelectFilters(tipo) {
+            if (tipo === 'rubro') {
+                document.getElementById('filter-rubro').value = document.getElementById('filter-rubro-mobile').value;
+            } else {
+                document.getElementById('filter-provincia').value = document.getElementById('filter-provincia-mobile').value;
+            }
+            filterDirectory();
+        }
+
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('search-input-mobile').value = '';
+            document.getElementById('filter-rubro').value = '';
+            document.getElementById('filter-rubro-mobile').value = '';
+            document.getElementById('filter-provincia').value = '';
+            document.getElementById('filter-provincia-mobile').value = '';
+            filterDirectory();
+        }
+
+        // ── CONSUMO SÚPABASE: CARGAR Y FILTRAR TIENDAS ─────────────────
+        async function cargarDirectorioCompleto() {
+            if (!SUPABASE_OK) {
+                renderizarTiendas([]);
+                return;
+            }
+            document.getElementById('loading-indicator').classList.remove('hidden');
+            try {
+                const { data, error } = await sb.from('tiendas').select('*');
+                if (error) throw error;
+                tiendasGlobal = data || [];
+                document.getElementById('stat-tiendas').innerText = tiendasGlobal.length;
+                filterDirectory();
+            } catch (err) {
+                console.error("Error cargando directorio:", err);
+                showToast("No se pudo obtener la base de datos.", "error");
+            } finally {
+                document.getElementById('loading-indicator').classList.add('hidden');
+            }
+        }
+
+        function filterDirectory() {
+            const txt = document.getElementById('search-input').value.toLowerCase().trim();
+            const rub = document.getElementById('filter-rubro').value;
+            const prv = document.getElementById('filter-provincia').value;
+
+            let filtrados = tiendasGlobal.filter(t => {
+                const matchTxt = !txt || (t.nombre && t.nombre.toLowerCase().includes(txt)) || (t.rubro && t.rubro.toLowerCase().includes(txt)) || (t.descripcion && t.descripcion.toLowerCase().includes(txt));
+                const matchRub = !rub || t.rubro === rub;
+                const matchPrv = !prv || t.provincia === prv;
+                return matchTxt && matchRub && matchPrv;
+            });
+
+            renderizarTiendas(filtrados);
+        }
+
+        function renderizarTiendas(lista) {
+            const grid = document.getElementById('grid-mayoristas');
+            const cnt = document.getElementById('result-count');
+            grid.innerHTML = '';
+            cnt.innerText = `${lista.length} distribuidora${lista.length !== 1 ? 's' : ''} encontrada${lista.length !== 1 ? 's' : ''}`;
+
+            if (lista.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full empty-state bg-white border border-slate-200 rounded-2xl">
+                        <i class="fa-solid fa-folder-open text-3xl text-slate-300"></i>
+                        <p class="font-semibold text-slate-700">Sin resultados</p>
+                        <p class="text-xs max-w-xs">Probá cambiando los términos de la búsqueda o limpiando los filtros actuales.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            lista.forEach(t => {
+                const logoSrc = t.logo_url || "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23e2e8f0'><rect width='100' height='100'/><text y='55' x='50' text-anchor='middle' font-family='sans-serif' font-size='28' fill='%2394a3b8'>📦</text></svg>";
+                const minComp = t.compra_minima ? parseInt(t.compra_minima).toLocaleString('es-AR') : 'No especifica';
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl border border-slate-200 p-5 shadow-sm cursor-pointer card-hover flex flex-col justify-between";
+                card.setAttribute('onclick', `verPerfilTienda('${t.id}')`);
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-4">
+                            <img src="${logoSrc}" class="w-12 h-12 rounded-xl object-cover border border-slate-100 bg-slate-50 shrink-0" alt="logo">
+                            <span class="badge bg-brand-50 text-brand-700 border border-brand-100">${t.rubro || 'Otros'}</span>
+                        </div>
+                        <h4 class="font-outfit font-bold text-base text-slate-900 leading-snug mb-1.5">${t.nombre || 'Sin nombre'}</h4>
+                        <p class="text-xs text-slate-400 font-medium flex items-center gap-1 mb-3">
+                            <i class="fa-solid fa-location-dot text-slate-300"></i> ${t.provincia || 'Argentina'}
+                        </p>
+                        <p class="text-slate-500 text-xs line-clamp-2 leading-relaxed mb-4">${t.descripcion || 'Sin descripción adicional disponible.'}</p>
+                    </div>
+                    <div class="border-t border-slate-100 pt-3 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-400 font-medium">Mínimo de compra</span>
+                        <span class="font-bold text-slate-700">${typeof minComp === 'number' || !isNaN(t.compra_minima) ? '$' + minComp : minComp}</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ── VISTA DETALLE: PERFIL TIENDA PÚBLICO ──────────────────────
+        async function verPerfilTienda(id) {
+            const tienda = tiendasGlobal.find(t => t.id == id);
+            if (!tienda) return;
+
+            const wrapper = document.getElementById('perfil-info-wrapper');
+            const prdGrid = document.getElementById('perfil-productos');
+            wrapper.innerHTML = `<div class="p-8 text-center text-xs text-slate-400"><i class="fa-solid fa-circle-notch spin"></i> Cargando tienda...</div>`;
+            prdGrid.innerHTML = '';
+
+            changeView('perfil');
+
+            const logoSrc = tienda.logo_url || "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23e2e8f0'><rect width='100' height='100'/></svg>";
+            const bannerSrc = tienda.banner_url || "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 200' fill='%23f8fafc'><rect width='800' height='200'/></svg>";
+            const minComp = tienda.compra_minima ? parseInt(tienda.compra_minima).toLocaleString('es-AR') : 'No especifica';
+
+            // HTML Dinámico de información con los nuevos campos integrados estéticamente
+            wrapper.innerHTML = `
+                <div class="h-32 sm:h-44 bg-slate-100 relative">
+                    <img src="${bannerSrc}" class="w-full h-full object-cover" alt="banner">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-5 md:p-8 relative">
+                    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 -mt-16 sm:-mt-20 mb-5 relative z-10">
+                        <img src="${logoSrc}" class="w-20 h-20 sm:w-24 sm:h-24 bg-white border-2 border-white rounded-2xl shadow object-cover" alt="logo">
+                        <div class="flex flex-wrap gap-2">
+                            ${tienda.whatsapp ? `
+                                <a href="https://wa.me/54${tienda.whatsapp.replace(/\D/g,'')}" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
+                                    <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                                </a>
+                            ` : ''}
+                            ${tienda.instagram ? `
+                                <a href="https://instagram.com/${tienda.instagram.trim()}" target="_blank" class="bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 hover:opacity-90 text-white px-4 py-2 rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
+                                    <i class="fa-brands fa-instagram text-sm"></i> Instagram
+                                </a>
+                            ` : ''}
+                            ${tienda.email_contacto ? `
+                                <a href="mailto:${tienda.email_contacto.trim()}" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-xs font-bold shadow transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-envelope text-sm"></i> Correo
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+                        <div class="md:col-span-2 space-y-3">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <h2 class="font-outfit font-extrabold text-2xl md:text-3xl text-slate-900 leading-tight">${tienda.nombre || 'Distribuidora'}</h2>
+                                <span class="badge bg-slate-100 text-slate-600 border">${tienda.rubro || 'Otros'}</span>
+                            </div>
+                            <p class="text-xs text-slate-400 font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-location-dot text-brand-500"></i> ${tienda.provincia || 'Argentina'}
+                                ${tienda.direccion ? ` <span class="text-slate-300">|</span> <span class="text-slate-500">${tienda.direccion}</span>` : ''}
+                            </p>
+                            <p class="text-slate-600 text-sm leading-relaxed whitespace-pre-line pt-2">${tienda.descripcion || 'Sin descripción provista.'}</p>
+                        </div>
+
+                        <div class="bg-slate-50 border border-slate-200/60 rounded-xl p-4 space-y-3.5 text-xs">
+                            <h4 class="font-bold text-slate-800 border-b pb-2 uppercase tracking-wider text-[10px]">Información comercial</h4>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400 font-medium">Mínimo de Compra</span>
+                                <span class="font-bold text-slate-800">${typeof minComp === 'number' || !isNaN(tienda.compra_minima) ? '$' + minComp : minComp}</span>
+                            </div>
+                            ${tienda.nombre_contacto ? `
+                            <div class="flex justify-between">
+                                <span class="text-slate-400 font-medium">Atención / Vendedor</span>
+                                <span class="font-bold text-slate-800">${tienda.nombre_contacto}</span>
+                            </div>
+                            ` : ''}
                         </div>
                     </div>
                 </div>
-                <p class="text-slate-400 text-xs leading-relaxed line-clamp-2">${tienda.descripcion || 'Sin descripción cargada.'}</p>
-            </div>
-            <div class="pt-4 mt-4 border-t border-slate-100 flex justify-between items-center">
-                <div>
-                    <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wide">Compra mínima</span>
-                    <span class="text-sm font-extrabold text-slate-800">$${(tienda.minimo || 0).toLocaleString('es-AR')}</span>
-                </div>
-                <span class="text-brand-600 font-semibold text-xs flex items-center gap-1">Ver catálogo <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
             </div>`;
-        grid.appendChild(card);
-    });
-}
- 
-function updateStatCount() {
-    const el = document.getElementById('stat-tiendas');
-    if (el) el.textContent = baseMayoristas.length || '0';
-}
- 
-// ── Panel admin ────────────────────────────────────────
-function openAdminPanel(tienda) {
-    if (!tienda) return;
-    changeView('admin');
-    document.getElementById('admin-nombre').value      = tienda.nombre || '';
-    document.getElementById('admin-rubro').value       = tienda.rubro || 'Otros';
-    document.getElementById('admin-provincia').value   = tienda.provincia || 'CABA';
-    document.getElementById('admin-minimo').value      = tienda.minimo || '';
-    document.getElementById('admin-descripcion').value = tienda.descripcion || '';
-    document.getElementById('admin-whatsapp').value    = tienda.whatsapp || '';
-    renderPreviewsAdmin(tienda);
-    renderProductosAdmin(tienda);
-    updateNavLoggedIn();
-}
- 
-function renderPreviewsAdmin(tienda) {
-    const srcL = tienda.logo_url || tienda.logo;
-    const srcB = tienda.banner_url || tienda.banner;
-    const pL = document.getElementById('admin-preview-logo');
-    const pB = document.getElementById('admin-preview-banner');
-    if (srcL) { pL.innerHTML = '<img src="' + srcL + '" class="w-full h-full object-cover">'; pL.classList.remove('hidden'); }
-    if (srcB) { pB.innerHTML = '<img src="' + srcB + '" class="w-full h-full object-cover">'; pB.classList.remove('hidden'); }
-}
- 
-function uploadImageHandler(input, tipo) {
-    const file = input.files[0];
-    if (!file || !tiendaActivaAdmin) return;
-    const r = new FileReader();
-    r.onload = e => {
-        if (tipo === 'logo')   tiendaActivaAdmin.logo   = e.target.result;
-        if (tipo === 'banner') tiendaActivaAdmin.banner = e.target.result;
-        renderPreviewsAdmin(tiendaActivaAdmin);
-    };
-    r.readAsDataURL(file);
-}
- 
-document.getElementById('admin-prod-foto').addEventListener('change', function(e) {
-    const file = e.target.files[0]; if (!file) return;
-    const reader = new FileReader();
-    reader.onload = ev => { tempProductImage = ev.target.result; };
-    reader.readAsDataURL(file);
-});
- 
-function agregarProductoAdmin() {
-    const nom = document.getElementById('admin-prod-nombre').value.trim();
-    const pre = document.getElementById('admin-prod-precio').value;
-    if (!nom || !pre) { showToast('Completá nombre y precio', 'error'); return; }
-    if (!tiendaActivaAdmin.productos) tiendaActivaAdmin.productos = [];
-    tiendaActivaAdmin.productos.push({ id: Date.now(), nombre: nom, precio: parseFloat(pre), foto: tempProductImage });
-    tempProductImage = null;
-    ['admin-prod-nombre', 'admin-prod-precio', 'admin-prod-foto'].forEach(id => { document.getElementById(id).value = ''; });
-    renderProductosAdmin(tiendaActivaAdmin);
-    showToast('Artículo añadido');
-}
- 
-function eliminarProductoAdmin(idx) {
-    tiendaActivaAdmin.productos.splice(idx, 1);
-    renderProductosAdmin(tiendaActivaAdmin);
-}
- 
-function renderProductosAdmin(tienda) {
-    const box = document.getElementById('admin-lista-productos');
-    const prods = tienda.productos || [];
-    if (!prods.length) { box.innerHTML = '<p class="text-xs text-slate-400 text-center py-4">Tu catálogo está vacío.</p>'; return; }
-    box.innerHTML = prods.map((p, idx) => {
-        const thumb = p.foto
-            ? '<img src="' + p.foto + '" class="w-8 h-8 object-cover rounded-lg shrink-0">'
-            : '<div class="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center shrink-0"><i class="fa-solid fa-box text-slate-400 text-xs"></i></div>';
-        return '<div class="flex justify-between items-center bg-slate-50 p-2.5 text-xs rounded-xl border border-slate-100 gap-2">' +
-            thumb +
-            '<div class="flex-1 min-w-0"><p class="font-semibold text-slate-700 truncate">' + p.nombre + '</p><p class="text-slate-400">$' + parseFloat(p.precio).toLocaleString('es-AR') + '</p></div>' +
-            '<button onclick="eliminarProductoAdmin(' + idx + ')" class="text-slate-300 hover:text-red-500 transition p-1"><i class="fa-solid fa-trash text-xs"></i></button></div>';
-    }).join('');
-}
- 
-async function guardarDatosTiendaAdmin() {
-    if (!tiendaActivaAdmin) return;
-    setBtnLoading('btn-guardar', true, 'Guardando...');
- 
-    tiendaActivaAdmin.nombre      = document.getElementById('admin-nombre').value.trim();
-    tiendaActivaAdmin.rubro       = document.getElementById('admin-rubro').value;
-    tiendaActivaAdmin.provincia   = document.getElementById('admin-provincia').value;
-    tiendaActivaAdmin.minimo      = parseFloat(document.getElementById('admin-minimo').value) || 0;
-    tiendaActivaAdmin.descripcion = document.getElementById('admin-descripcion').value.trim();
-    tiendaActivaAdmin.whatsapp    = document.getElementById('admin-whatsapp').value.replace(/\D/g, '');
- 
-    if (SUPABASE_OK) {
-        const { error } = await sb.from('tiendas').upsert({
-            id: tiendaActivaAdmin.id,
-            email: tiendaActivaAdmin.email,
-            nombre: tiendaActivaAdmin.nombre,
-            rubro: tiendaActivaAdmin.rubro,
-            provincia: tiendaActivaAdmin.provincia,
-            minimo: tiendaActivaAdmin.minimo,
-            descripcion: tiendaActivaAdmin.descripcion,
-            whatsapp: tiendaActivaAdmin.whatsapp,
-            logo: tiendaActivaAdmin.logo || null,
-            banner: tiendaActivaAdmin.banner || null,
-        });
-        if (error) { setBtnLoading('btn-guardar', false, 'Guardar y publicar cambios'); showToast('Error: ' + error.message, 'error'); return; }
-        // Productos: borrar y reinsertar
-        await sb.from('productos').delete().eq('tienda_id', tiendaActivaAdmin.id);
-        const prods = (tiendaActivaAdmin.productos || []).map(p => ({ tienda_id: tiendaActivaAdmin.id, nombre: p.nombre, precio: p.precio, foto: p.foto || null }));
-        if (prods.length) await sb.from('productos').insert(prods);
-        await cargarTiendas();
-    } else {
-        const idx = baseMayoristas.findIndex(t => t.id === tiendaActivaAdmin.id);
-        if (idx !== -1) baseMayoristas[idx] = tiendaActivaAdmin;
-        saveLocal();
-        mayoristasActuales = [...baseMayoristas];
-        renderDirectory();
-        updateStatCount();
-    }
- 
-    setBtnLoading('btn-guardar', false, 'Guardar y publicar cambios');
-    showToast('Cambios publicados exitosamente');
-    changeView('home');
-}
- 
-function saveLocal() {
-    localStorage.setItem('AL_MAYOREO_TIENDAS', JSON.stringify(baseMayoristas));
-}
- 
-// ── Perfil público ─────────────────────────────────────
-async function verPerfilTienda(id) {
-    let tienda = baseMayoristas.find(t => t.id === id);
-    if (SUPABASE_OK) {
-        const { data } = await sb.from('tiendas').select('*, productos(*)').eq('id', id).single();
-        if (data) tienda = data;
-    }
-    if (!tienda) return;
- 
-    const bannerSrc = tienda.banner_url || tienda.banner;
-    const logoSrc   = tienda.logo_url   || tienda.logo;
- 
-    const bannerHtml = bannerSrc
-        ? '<div class="h-40 md:h-52 w-full"><img src="' + bannerSrc + '" class="w-full h-full object-cover"></div>'
-        : '<div class="h-28 w-full bg-gradient-to-br from-brand-100 to-violet-100"></div>';
- 
-    const logoHtml = logoSrc
-        ? '<img src="' + logoSrc + '" class="w-full h-full object-cover">'
-        : '<div class="w-full h-full flex items-center justify-center text-2xl font-black text-brand-400 font-outfit bg-brand-50">' + (tienda.nombre || '?')[0].toUpperCase() + '</div>';
- 
-    // ── WhatsApp: construir URL correcta ──
-    let waBtn = '';
-    if (tienda.whatsapp) {
-        const num = tienda.whatsapp.replace(/\D/g, '');
-        const numFull = num.startsWith('54') ? num : '54' + num;
-        waBtn = '<a href="https://wa.me/' + numFull + '" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl text-xs font-bold shadow transition"><i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp</a>';
-    }
- 
-    document.getElementById('perfil-info-wrapper').innerHTML =
-        bannerHtml +
-        '<div class="p-5 md:p-6 relative bg-white">' +
-            '<div class="absolute -top-8 left-5 w-16 h-16 rounded-2xl bg-white shadow border-2 border-white overflow-hidden">' + logoHtml + '</div>' +
-            '<div class="pt-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">' +
-                '<div>' +
-                    '<h2 class="text-xl md:text-2xl font-extrabold text-slate-900">' + (tienda.nombre || 'Distribuidora') + '</h2>' +
-                    '<div class="flex flex-wrap gap-2 mt-1.5">' +
-                        '<span class="badge bg-brand-50 text-brand-700">' + (tienda.rubro || '') + '</span>' +
-                        '<span class="badge bg-slate-100 text-slate-500"><i class="fa-solid fa-location-dot text-[9px]"></i> ' + (tienda.provincia || '') + '</span>' +
-                    '</div>' +
-                '</div>' +
-                waBtn +
-            '</div>' +
-            '<p class="text-slate-500 mt-4 text-sm leading-relaxed">' + (tienda.descripcion || 'Sin descripción.') + '</p>' +
-            '<div class="mt-4 inline-flex items-center gap-2 bg-slate-50 border border-slate-200 px-3 py-2 rounded-xl text-xs font-bold text-slate-700">' +
-                '<i class="fa-solid fa-bag-shopping text-brand-500"></i>' +
-                'Compra mínima: <span class="text-brand-600">$' + (tienda.minimo || 0).toLocaleString('es-AR') + '</span>' +
-            '</div>' +
-        '</div>';
- 
-    const prods = tienda.productos || [];
-    const gridProd = document.getElementById('perfil-productos');
-    if (!prods.length) {
-        gridProd.innerHTML = '<div class="col-span-full empty-state"><div class="text-3xl mb-2">📦</div><p class="text-slate-500 font-medium">Catálogo en construcción</p><p class="text-slate-400 text-xs">Esta tienda aún no cargó productos.</p></div>';
-    } else {
-        gridProd.innerHTML = prods.map(p => {
-            const fs = p.foto_url || p.foto;
-            const imgH = fs ? '<img src="' + fs + '" class="w-full h-full object-cover">' : '<i class="fa-solid fa-box text-2xl text-slate-200"></i>';
-            return '<div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex flex-col gap-2">' +
-                '<div class="h-28 bg-white rounded-lg border border-slate-100 flex items-center justify-center overflow-hidden">' + imgH + '</div>' +
-                '<p class="font-semibold text-slate-800 text-xs leading-tight">' + p.nombre + '</p>' +
-                '<p class="text-brand-600 font-extrabold text-sm">$' + parseFloat(p.precio).toLocaleString('es-AR') + '</p></div>';
-        }).join('');
-    }
-    changeView('perfil');
-}
- 
-// ── Filtros ────────────────────────────────────────────
-function filterDirectory() {
-    const q  = (document.getElementById('search-input') ? document.getElementById('search-input').value : '').toLowerCase();
-    const r  = document.getElementById('filter-rubro')     ? document.getElementById('filter-rubro').value     : '';
-    const p  = document.getElementById('filter-provincia') ? document.getElementById('filter-provincia').value : '';
-    mayoristasActuales = baseMayoristas.filter(t => {
-        const cQ = !q || (t.nombre||'').toLowerCase().includes(q) || (t.descripcion||'').toLowerCase().includes(q) || (t.rubro||'').toLowerCase().includes(q);
-        const cR = !r || t.rubro === r;
-        const cP = !p || t.provincia === p;
-        return cQ && cR && cP;
-    });
-    renderDirectory();
-}
- 
-function syncSearch(el) {
-    const d = document.getElementById('search-input');
-    if (d) d.value = el.value;
-    filterDirectory();
-}
- 
-function syncFilters(el, tipo) {
-    const id = tipo === 'rubro' ? 'filter-rubro' : 'filter-provincia';
-    const d = document.getElementById(id);
-    if (d) d.value = el.value;
-    filterDirectory();
-}
- 
-function resetFilters() {
-    ['filter-rubro','filter-provincia','search-input','filter-rubro-mobile','filter-provincia-mobile','search-input-mobile'].forEach(id => {
-        const e = document.getElementById(id); if (e) e.value = '';
-    });
-    mayoristasActuales = [...baseMayoristas];
-    renderDirectory();
-}
- 
-// ── Navegación ─────────────────────────────────────────
-function changeView(v) {
-    document.getElementById('view-home').classList.toggle('hidden',   v !== 'home');
-    document.getElementById('view-perfil').classList.toggle('hidden', v !== 'perfil');
-    document.getElementById('view-admin').classList.toggle('hidden',  v !== 'admin');
-    document.getElementById('hero-banner').classList.toggle('hidden', v === 'admin' || v === 'perfil');
-    document.getElementById('como-funciona').classList.toggle('hidden', v === 'admin');
-    if (v === 'home')   window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (v === 'perfil') window.scrollTo({ top: 64, behavior: 'smooth' });
-}
- 
-function focusSearch() {
-    changeView('home');
-    setTimeout(() => {
-        const el = document.getElementById('search-input') || document.getElementById('search-input-mobile');
-        if (el) { el.focus(); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-    }, 100);
-}
- 
-function scrollToSection(id) {
-    changeView('home');
-    setTimeout(() => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth' }); }, 100);
-}
- 
-// ── Mobile UI ──────────────────────────────────────────
-function toggleMobileMenu()  { document.getElementById('mobile-menu').classList.toggle('open'); }
-function closeMobileMenu()   { document.getElementById('mobile-menu').classList.remove('open'); }
-function openMobileFilters() { document.getElementById('modal-filtros-mobile').classList.remove('hidden'); }
-function closeMobileFilters(){ document.getElementById('modal-filtros-mobile').classList.add('hidden'); }
- 
-// ── Modales ────────────────────────────────────────────
-function openModal(id)  { document.getElementById(id).classList.remove('hidden'); }
-function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
- 
-['modal-auth','modal-privacidad','modal-terminos','modal-filtros-mobile'].forEach(id => {
-    document.getElementById(id).addEventListener('click', function(e) {
-        if (e.target === this) {
-            if (id === 'modal-auth') closeAuthModal();
-            else if (id === 'modal-filtros-mobile') closeMobileFilters();
-            else closeModal(id);
+
+            // Traer catálogo de productos de este distribuidor de forma segura
+            if (SUPABASE_OK) {
+                try {
+                    const { data, error } = await sb.from('productos').select('*').eq('tienda_id', tienda.id);
+                    if (error) throw error;
+
+                    if (!data || data.length === 0) {
+                        prdGrid.innerHTML = `
+                            <div class="col-span-full py-10 text-center text-slate-400 text-xs">
+                                <i class="fa-solid fa-boxes-stacked text-2xl mb-2 text-slate-200 block"></i>
+                                Este mayorista aún no ha cargado artículos específicos a su catálogo.
+                            </div>
+                        `;
+                    } else {
+                        data.forEach(p => {
+                            const pFoto = p.foto_url || "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23f1f5f9'><rect width='100' height='100'/><text y='55' x='50' text-anchor='middle' font-family='sans-serif' font-size='22' fill='%23cbd5e1'>📦</text></svg>";
+                            const item = document.createElement('div');
+                            item.className = "bg-slate-50 border border-slate-200/70 p-3 rounded-xl flex flex-col justify-between";
+                            item.innerHTML = `
+                                <div>
+                                    <img src="${pFoto}" class="w-full aspect-square object-cover bg-white rounded-lg border mb-2.5" alt="producto">
+                                    <h5 class="font-semibold text-xs text-slate-800 leading-snug line-clamp-2">${p.nombre}</h5>
+                                </div>
+                                <div class="text-slate-900 font-bold text-sm mt-2">$${parseInt(p.precio).toLocaleString('es-AR')}</div>
+                            `;
+                            prdGrid.appendChild(item);
+                        });
+                    }
+                } catch (e) {
+                    console.error("Error cargando productos:", e);
+                }
+            }
         }
-    });
-});
+
+        // ── AUTENTICACIÓN: LOGIN Y REGISTRO RE-IMPLEMENTADOS ───────────
+        function openAuthModal() { openModal('modal-auth'); }
+        function closeAuthModal() { closeModal('modal-auth'); }
+
+        function switchAuthTab(modo) {
+            authModo = modo;
+            const tabReg = document.getElementById('tab-reg');
+            const tabLog = document.getElementById('tab-log');
+            const btnSubmit = document.getElementById('btn-auth-submit');
+
+            if (modo === 'registro') {
+                tabReg.className = "flex-1 py-3.5 text-sm font-semibold border-b-2 transition text-brand-600 border-brand-600";
+                tabLog.className = "flex-1 py-3.5 text-sm font-semibold border-b-2 transition text-slate-400 border-transparent";
+                btnSubmit.innerText = "Crear mi cuenta";
+            } else {
+                tabLog.className = "flex-1 py-3.5 text-sm font-semibold border-b-2 transition text-brand-600 border-brand-600";
+                tabReg.className = "flex-1 py-3.5 text-sm font-semibold border-b-2 transition text-slate-400 border-transparent";
+                btnSubmit.innerText = "Ingresar";
+            }
+        }
+
+        async function handleSubmitAuth() {
+            if (!SUPABASE_OK) {
+                showToast("Error de llaves de configuración.", "error");
+                return;
+            }
+            const email = document.getElementById('auth-email').value.trim();
+            const pass = document.getElementById('auth-password').value.trim();
+
+            if (!email || !pass) {
+                showToast("Por favor completá los dos campos.", "error");
+                return;
+            }
+
+            setBtnLoading('btn-auth-submit', true, authModo === 'registro' ? 'Creando cuenta...' : 'Ingresando...');
+
+            try {
+                if (authModo === 'registro') {
+                    const { data, error } = await sb.auth.signUp({ email, password: pass });
+                    if (error) throw error;
+                    showToast("¡Cuenta creada con éxito! Iniciando sesión...", "success");
+                    usuarioLogueado = data.user;
+                    await validacionDeTiendaAdmin(data.user);
+                } else {
+                    const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
+                    if (error) throw error;
+                    showToast("Sesión iniciada correctamente.", "success");
+                    usuarioLogueado = data.user;
+                    await validacionDeTiendaAdmin(data.user);
+                }
+                closeAuthModal();
+            } catch (err) {
+                console.error(err);
+                showToast(err.message || "Ocurrió un problema en la autenticación.", "error");
+            } finally {
+                setBtnLoading('btn-auth-submit', false, authModo === 'registro' ? 'Crear mi cuenta' : 'Ingresar');
+            }
+        }
+
+        async function validacionDeTiendaAdmin(user) {
+            if (!user) return;
+            try {
+                const { data, error } = await sb.from('tiendas').select('*').eq('owner_id', user.id).maybeSingle();
+                if (error) throw error;
+
+                if (!data) {
+                    // Crear fila base si es cuenta totalmente nueva
+                    const { data: nuevaTienda, error: errCrea } = await sb.from('tiendas').insert([
+                        { owner_id: user.id, nombre: "Mi Nueva Distribuidora", rubro: "Otros", provincia: "CABA" }
+                    ]).select().single();
+                    
+                    if (errCrea) throw errCrea;
+                    tiendaAdminLocal = nuevaTienda;
+                } else {
+                    tiendaAdminLocal = data;
+                }
+
+                inyectarDatosFormularioAdmin();
+                await cargarProductosCatalogoAdmin();
+                
+                // Cambiar el CTA del Nav a Panel de control
+                document.getElementById('nav-auth-buttons').innerHTML = `
+                    <button onclick="changeView('admin')" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-semibold text-xs md:text-sm shadow transition flex items-center gap-2">
+                        <i class="fa-solid fa-user-gear"></i> <span>Mi Panel</span>
+                    </button>
+                `;
+                changeView('admin');
+            } catch (e) {
+                console.error(e);
+                showToast("Fallo al validar registro de tienda corporativa.", "error");
+            }
+        }
+
+        function verificarSesionExistente() {
+            if (!SUPABASE_OK) return;
+            sb.auth.getSession().then(({ data: { session } }) => {
+                if (session && session.user) {
+                    usuarioLogueado = session.user;
+                    validacionDeTiendaAdmin(session.user);
+                }
+            });
+        }
+
+        function logoutAdmin() {
+            if (SUPABASE_OK) sb.auth.signOut();
+            usuarioLogueado = null;
+            tiendaAdminLocal = null;
+            productosAdminLocal = [];
+            document.getElementById('nav-auth-buttons').innerHTML = `
+                <button onclick="openAuthModal()" class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-semibold text-xs md:text-sm shadow transition flex items-center gap-2">
+                    <i class="fa-solid fa-shop hidden sm:inline"></i> <span>Sumar mi Tienda</span>
+                </button>
+            `;
+            changeView('home');
+            showToast("Sesión finalizada.", "success");
+        }
+
+        // ── CONTROLADORES DE PANEL DE CONTROL (ADMIN) ───────────────────
+        function inyectarDatosFormularioAdmin() {
+            if (!tiendaAdminLocal) return;
+            document.getElementById('admin-nombre').value = tiendaAdminLocal.nombre || '';
+            document.getElementById('admin-rubro').value = tiendaAdminLocal.rubro || 'Otros';
+            document.getElementById('admin-provincia').value = tiendaAdminLocal.provincia || 'CABA';
+            document.getElementById('admin-minimo').value = tiendaAdminLocal.compra_minima || '';
+            document.getElementById('admin-descripcion').value = tiendaAdminLocal.descripcion || '';
+            document.getElementById('admin-whatsapp').value = tiendaAdminLocal.whatsapp || '';
+
+            // Inyección segura de los nuevos campos del formulario
+            document.getElementById('admin-nombre-contacto').value = tiendaAdminLocal.nombre_contacto || '';
+            document.getElementById('admin-direccion').value = tiendaAdminLocal.direccion || '';
+            document.getElementById('admin-email-contacto').value = tiendaAdminLocal.email_contacto || '';
+            document.getElementById('admin-instagram').value = tiendaAdminLocal.instagram || '';
+
+            const pLogo = document.getElementById('admin-preview-logo');
+            if (tiendaAdminLocal.logo_url) {
+                pLogo.innerHTML = `<img src="${tiendaAdminLocal.logo_url}" class="w-full h-full object-cover">`;
+                pLogo.classList.remove('hidden');
+            }
+            const pBanner = document.getElementById('admin-preview-banner');
+            if (tiendaAdminLocal.banner_url) {
+                pBanner.innerHTML = `<img src="${tiendaAdminLocal.banner_url}" class="w-full h-full object-cover">`;
+                pBanner.classList.remove('hidden');
+            }
+        }
+
+        function uploadImageHandler(input, destino) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            const r = new FileReader();
+            r.onloadend = () => {
+                if (destino === 'logo') {
+                    base64LogoTmp = r.result;
+                    const p = document.getElementById('admin-preview-logo');
+                    p.innerHTML = `<img src="${r.result}" class="w-full h-full object-cover">`;
+                    p.classList.remove('hidden');
+                } else {
+                    base64BannerTmp = r.result;
+                    const p = document.getElementById('admin-preview-banner');
+                    p.innerHTML = `<img src="${r.result}" class="w-full h-full object-cover">`;
+                    p.classList.remove('hidden');
+                }
+            };
+            r.readAsDataURL(file);
+        }
+
+        async function guardarDatosTiendaAdmin() {
+            if (!tiendaAdminLocal || !SUPABASE_OK) return;
+
+            setBtnLoading('btn-guardar', true, 'Guardando cambios...');
+
+            const payload = {
+                nombre: document.getElementById('admin-nombre').value.trim(),
+                rubro: document.getElementById('admin-rubro').value,
+                provincia: document.getElementById('admin-provincia').value,
+                compra_minima: document.getElementById('admin-minimo').value ? parseFloat(document.getElementById('admin-minimo').value) : null,
+                descripcion: document.getElementById('admin-descripcion').value.trim(),
+                whatsapp: document.getElementById('admin-whatsapp').value.trim(),
+                
+                // Mapeo seguro de campos nuevos a la tabla
+                nombre_contacto: document.getElementById('admin-nombre-contacto').value.trim(),
+                direccion: document.getElementById('admin-direccion').value.trim(),
+                email_contacto: document.getElementById('admin-email-contacto').value.trim(),
+                instagram: document.getElementById('admin-instagram').value.trim().replace('@', '')
+            };
+
+            if (base64LogoTmp) payload.logo_url = base64LogoTmp;
+            if (base64BannerTmp) payload.banner_url = base64BannerTmp;
+
+            try {
+                const { data, error } = await sb.from('tiendas').update(payload).eq('id', tiendaAdminLocal.id).select().single();
+                if (error) throw error;
+
+                tiendaAdminLocal = data;
+                base64LogoTmp = null;
+                base64BannerTmp = null;
+                
+                showToast("¡Cambios publicados en el directorio!", "success");
+                await cargarDirectorioCompleto();
+            } catch (err) {
+                console.error(err);
+                showToast("Fallo al actualizar la base de datos de la tienda.", "error");
+            } finally {
+                setBtnLoading('btn-guardar', false, 'Guardar y publicar cambios');
+            }
+        }
+
+        // Lógicas internas de catálogo en panel de control
+        async function cargarProductosCatalogoAdmin() {
+            if (!tiendaAdminLocal || !SUPABASE_OK) return;
+            try {
+                const { data, error } = await sb.from('productos').select('*').eq('tienda_id', tiendaAdminLocal.id);
+                if (error) throw error;
+                productosAdminLocal = data || [];
+                renderizarListaProductosAdmin();
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        function renderizarListaProductosAdmin() {
+            const container = document.getElementById('admin-lista-productos');
+            container.innerHTML = '';
+
+            if (productosAdminLocal.length === 0) {
+                container.innerHTML = `<p class="text-[11px] text-slate-400 text-center py-4">Catálogo vacío.</p>`;
+                return;
+            }
+
+            productosAdminLocal.forEach(p => {
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between bg-slate-50 border p-2 rounded-xl text-xs gap-2";
+                div.innerHTML = `
+                    <div class="flex items-center gap-2 min-w-0">
+                        ${p.foto_url ? `<img src="${p.foto_url}" class="w-8 h-8 rounded object-cover border bg-white shrink-0">` : `<div class="w-8 h-8 rounded bg-slate-200 flex items-center justify-center shrink-0">📦</div>`}
+                        <div class="truncate">
+                            <p class="font-bold text-slate-700 truncate">${p.nombre}</p>
+                            <p class="text-[10px] text-brand-600 font-semibold">$${parseFloat(p.precio).toLocaleString('es-AR')}</p>
+                        </div>
+                    </div>
+                    <button onclick="eliminarProductoAdmin('${p.id}')" class="text-slate-300 hover:text-red-500 p-1 transition"><i class="fa-solid fa-trash-can"></i></button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        async function agregarProductoAdmin() {
+            if (!tiendaAdminLocal || !SUPABASE_OK) return;
+
+            const nameInp = document.getElementById('admin-prod-nombre');
+            const priceInp = document.getElementById('admin-prod-precio');
+            const fileInp = document.getElementById('admin-prod-foto');
+
+            const nombre = nameInp.value.trim();
+            const precio = priceInp.value ? parseFloat(priceInp.value) : null;
+
+            if (!nombre || !precio) {
+                showToast("Indicá nombre y precio del artículo.", "error");
+                return;
+            }
+
+            const procederInsert = async (fotoB64) => {
+                try {
+                    const row = { tienda_id: tiendaAdminLocal.id, nombre, precio, foto_url: fotoB64 };
+                    const { error } = await sb.from('productos').insert([row]);
+                    if (error) throw error;
+
+                    showToast("Artículo añadido.", "success");
+                    nameInp.value = '';
+                    priceInp.value = '';
+                    fileInp.value = '';
+                    await cargarProductosCatalogoAdmin();
+                } catch (err) {
+                    console.error(err);
+                    showToast("No se pudo añadir el producto.", "error");
+                }
+            };
+
+            if (fileInp.files[0]) {
+                const r = new FileReader();
+                r.onloadend = () => procederInsert(r.result);
+                r.readAsDataURL(fileInp.files[0]);
+            } else {
+                procederInsert(null);
+            }
+        }
+
+        async function eliminarProductoAdmin(id) {
+            if (!SUPABASE_OK) return;
+            if (!confirm("¿Seguro que querés remover este producto del catálogo?")) return;
+            try {
+                const { error } = await sb.from('productos').delete().eq('id', id);
+                if (error) throw error;
+                showToast("Artículo removido.", "success");
+                await cargarProductosCatalogoAdmin();
+            } catch (e) {
+                console.error(e);
+                showToast("No se pudo eliminar.", "error");
+            }
+        }
+
+        // ── UTILS ──────────────────────────────────────────────
+        function openModal(id)  { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
  
-// ── Utils ──────────────────────────────────────────────
-function setBtnLoading(id, loading, label) {
-    const btn = document.getElementById(id);
-    if (!btn) return;
-    btn.disabled = loading;
-    btn.innerHTML = loading
-        ? '<i class="fa-solid fa-circle-notch" style="animation:spin 1s linear infinite;display:inline-block"></i> ' + label
-        : label;
-}
+        ['modal-auth','modal-privacidad','modal-terminos','modal-filtros-mobile'].forEach(id => {
+            document.getElementById(id).addEventListener('click', function(e) {
+                if (e.target === this) {
+                    if (id === 'modal-auth') closeAuthModal();
+                    else if (id === 'modal-filtros-mobile') closeMobileFilters();
+                    else closeModal(id);
+                }
+            });
+        });
  
-function showToast(msg, tipo) {
-    const c = document.getElementById('toast-container');
-    const t = document.createElement('div');
-    t.className = 'toast ' + (tipo === 'error' ? 'bg-red-600' : 'bg-slate-900') + ' text-white text-xs px-4 py-2.5 rounded-xl shadow-lg border border-white/10 pointer-events-auto';
-    t.textContent = msg;
-    c.appendChild(t);
-    setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity .3s'; setTimeout(() => t.remove(), 300); }, 3000);
-}
+        function setBtnLoading(id, loading, label) {
+            const btn = document.getElementById(id);
+            if (!btn) return;
+            btn.disabled = loading;
+            btn.innerHTML = loading
+                ? '<i class="fa-solid fa-circle-notch" style="animation:spin 1s linear infinite;display:inline-block"></i> ' + label
+                : label;
+        }
  
+        function showToast(msg, tipo) {
+            const c = document.getElementById('toast-container');
+            const t = document.createElement('div');
+            t.className = 'toast ' + (tipo === 'error' ? 'bg-red-600' : 'bg-slate-900') + ' text-white text-xs px-4 py-2.5 rounded-xl shadow-lg border border-white/10 pointer-events-auto min-w-[200px] flex items-center gap-2 font-medium';
+            t.innerHTML = tipo === 'error' ? `<i class="fa-solid fa-triangle-exclamation text-red-200"></i> ${msg}` : `<i class="fa-solid fa-circle-check text-emerald-400"></i> ${msg}`;
+            c.appendChild(t);
+            setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity 0.2s ease'; setTimeout(() => t.remove(), 200); }, 3500);
+        }
     </script>
 </body>
 </html>
