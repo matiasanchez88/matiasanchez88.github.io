@@ -385,7 +385,7 @@
 const SUPABASE_URL = 'https://zrjqshfqqvuxybywunzp.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_emvydP_eTN26uj5M4dzCGA_2FKgoTyx';
 
-const SUPABASE_OK = true; // Forzamos a que esté OK ya que pusimos las credenciales reales
+const SUPABASE_OK = SUPABASE_URL !== 'TU_SUPABASE_URL';
 let sb = null;
 if (SUPABASE_OK) sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
